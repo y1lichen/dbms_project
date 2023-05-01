@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JwtToken implements Serializable {
+
+    // TODO: change the expiration time
+    //  1 minutes
     private static final long EXPIRATION_TIME = 1 * 60 * 1000;
     private static final String SECRET = "the best group 18";
 
