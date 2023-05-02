@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Sans+TC:wght@500&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{
+    font-family: 'Poppins', cursive,'Noto Sans TC';
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*------------ header + nav-------------- */
+.header{
+    /* min-height至少要有這個高度 */
+    min-height: 100vh;
+    width: 100%;
+    background-image:linear-gradient(rgba(102, 143, 246, 0.715), rgba(248, 113, 72, 0.46)),url(./images/header_photo.jpg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
+    /* 超過header畫面的隱藏 */
+    overflow: hidden;
+}
+
+.logo{
+    color: 	#d8c235;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.logo:hover{
+    color: 	#caf521;
+    text-decoration: none;   
+}
+
+nav{
+    /* 由左至右 */
+    display: flex;
+    padding: 2% 6%;
+    /* 每個元素左右均分 */
+    justify-content: space-between;
+    /* 讓LOGO垂直至中(交錯軸) */
+    align-items: center;
+}
+
+.nav_links{
+    /* 大小same */
+    flex: 1;
+    text-align: right;
+}
+
+.nav_links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav_links ul li a{
+    /* nav刻字設計 */
+    color: aliceblue;
+    text-shadow: -1px -1px 0 black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* 底線色塊偽元素 */
+.nav_links ul li::after{
+    content: "";
+    /* 先設為寬度0未顯示 */
+    width: 0%;
+    height: 2px;
+    background:#f99822;
+    display:block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav_links ul li:hover::after{
+    /* 等游標移上去再顯示 */
+    width: 100%;
+}
+
+.header_title{
+    /* 跳脫元素位於前頁面圖層 */
+    position: absolute;
+    width: 90%;
+    /* 設定置中於橫圖 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}  
+
+.header_title h1{
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.979);
+    text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74);
+}
+
+.header_title p {
+    margin: 40px 0 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.979);
+}
+
+.sign_up_btn{
+    /* 行內區塊可以設寬高 */
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.979);
+    border: 1px solid white;
+    margin-top: 2%;
+    padding: 10px 30px;
+    font-size: 14px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+     
+}
+
+.sign_up_btn:hover{
+    text-decoration: none;
+    border:none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgba(147, 0, 0, 0.796);
+    background:rgb(237, 204, 144);
+    border-radius: 10px;
+    transition:0.5s;
+}
+
+nav .menu_btn{
+    display: none;
+}
+
+/*------------ intro-------------- */
+
+.intro{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+
+
+
+/* try try try */
+/*
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-left: 20px;
+} */
+/* 
+.header_container{
+    width: 100%;
+    
+    background-image:linear-gradient(rgba(240, 244, 177, 0.763), rgba(204, 74, 19, 0.352)),url(./images/header_photo2.jpg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
+
+} */
+
+
+
+
+@media (max-width:700px) {
+    .logo{
+        font-size: 20px;
+    }
+
+    .header_title h1{
+        font-size: 45px;
+    }
+
+    .header_title p{
+        font-size: 8px;
+    }
+
+    .nav_links ul li{
+        display: block;
+    }
+
+    .nav_links{
+        position: absolute;
+        background: #f8c52cbe;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        /* 先收回去(隱藏) */
+        right: -200px;
+        text-align: left;
+        /* 立體空間重疊 */
+        z-index: 2;
+        transition: 1s;
+        
+    }
+
+    nav .menu_btn{
+        display: block;
+        color: #ffffff;
+        margin: 10px;
+        font-size:22px;
+        cursor: pointer;
+    }
+
+    .nav_links ul{
+        padding: 30px;
+    }
+
+    .nav_links ul li a{
+       color: #ffffff;
+       text-shadow:2px 1px 1px rgba(0, 0, 0, 0.74);
+       transition: 0.5s; 
+    }
+
+    /* 取消底線色塊偽元素 */
+    .nav_links ul li::after{
+        display: none;
+    }
+
+    .nav_links ul li a:hover{
+        /* 等游標移上去再顯示 */
+        color: rgb(158, 55, 232);
+        font-size: 20px;
+        font-weight: 500;
+        text-shadow:2px 1px 1px rgba(227, 222, 222, 0.788); 
+    }
+
+}
