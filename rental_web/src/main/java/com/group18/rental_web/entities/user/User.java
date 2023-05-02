@@ -1,8 +1,13 @@
 package com.group18.rental_web.entities.user;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.group18.rental_web.entities.house.House;
 
 @Entity
 @Table(name = "user")
@@ -18,12 +23,12 @@ public class User {
 
     private String phone;
 
+    // 房東擁有的房子
+    @OneToMany
+    private Set<House> ownedHouse;
+
     public String getAccount() {
         return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
     }
 
     public String getHashedPassword() {
@@ -48,5 +53,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<House> getOwnedHouse() {
+        return ownedHouse;
+    }
+
+    public void setOwnedHouse(Set<House> ownedHouse) {
+        this.ownedHouse = ownedHouse;
     }
 }

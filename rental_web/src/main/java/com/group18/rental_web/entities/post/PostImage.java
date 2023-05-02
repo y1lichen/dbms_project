@@ -10,6 +10,7 @@ public class PostImage {
     private int id;
 
     @Lob
+    // 預設length只有250
     @Column(length = 1000)
     private byte[] imageByte;
 

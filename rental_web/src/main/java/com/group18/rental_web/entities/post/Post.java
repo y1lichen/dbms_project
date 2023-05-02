@@ -1,12 +1,15 @@
 package com.group18.rental_web.entities.post;
 
 
-import com.group18.rental_web.entities.user.User;
-
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.group18.rental_web.entities.user.User;
 
 public class Post {
     @Id
@@ -24,5 +27,37 @@ public class Post {
 
     @OneToMany(orphanRemoval = true)
     private Set<PostImage> postImages;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPostedTime(Date postedTime) {
+        this.postedTime = postedTime;
+    }
+
+    public Date getPostedTime() {
+        return postedTime;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
 
 }
