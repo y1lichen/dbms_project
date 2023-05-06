@@ -1,9 +1,9 @@
 package com.group18.rental_web.entities.house;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class HouseService {
@@ -12,6 +12,10 @@ public class HouseService {
 
     public void saveHouse(House house) {
         houseRepo.save(house);
+    }
+
+    public void deleteHouse(int id) {
+        houseRepo.deleteById(id);
     }
 
     public Optional<House> getHouseById(int id) {

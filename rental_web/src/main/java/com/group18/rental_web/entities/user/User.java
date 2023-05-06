@@ -1,11 +1,9 @@
 package com.group18.rental_web.entities.user;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.group18.rental_web.entities.house.House;
 
@@ -14,9 +12,14 @@ import com.group18.rental_web.entities.house.House;
 public class User {
     // email
     @Id
-    private String account;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private String email;
 
     private String hashedPassword;
+
+    private String name;
 
     //    0: male, 1: female, 2: other
     private int gender;
@@ -27,8 +30,28 @@ public class User {
     @OneToMany
     private Set<House> ownedHouse;
 
-    public String getAccount() {
-        return account;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getHashedPassword() {
@@ -61,5 +84,21 @@ public class User {
 
     public void setOwnedHouse(Set<House> ownedHouse) {
         this.ownedHouse = ownedHouse;
+    }
+
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles",
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+
+	private Set<Role> roles = new HashSet<>();
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
