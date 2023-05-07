@@ -1,4 +1,4 @@
-package com.group18.rental_web.entities.post;
+package com.group18.rental_web.model;
 
 
 import java.util.Date;
@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import com.group18.rental_web.entities.user.User;
 
 public class Post {
     @Id

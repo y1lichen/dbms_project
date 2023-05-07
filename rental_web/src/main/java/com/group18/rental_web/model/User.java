@@ -1,11 +1,9 @@
-package com.group18.rental_web.entities.user;
+package com.group18.rental_web.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
-
-import com.group18.rental_web.entities.house.House;
 
 @Entity
 @Table(name = "user")

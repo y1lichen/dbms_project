@@ -1,11 +1,10 @@
-package com.group18.rental_web.utils;
+package com.group18.rental_web.security.jwt;
 
-import com.group18.rental_web.entities.user.UserDetailImpl;
+import com.group18.rental_web.security.service.UserDetailImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com.group18.rental_web.utils;
+package com.group18.rental_web.security.jwt;
 
-import com.group18.rental_web.entities.user.UserDetailsServiceImpl;
+import com.group18.rental_web.security.service.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,9 @@
-package com.group18.rental_web.entities.house;
+package com.group18.rental_web.controller;
 
 import java.util.Optional;
 
+import com.group18.rental_web.model.House;
+import com.group18.rental_web.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

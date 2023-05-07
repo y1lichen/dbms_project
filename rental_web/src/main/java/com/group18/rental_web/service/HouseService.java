@@ -1,7 +1,9 @@
-package com.group18.rental_web.entities.house;
+package com.group18.rental_web.service;
 
 import java.util.Optional;
 
+import com.group18.rental_web.model.House;
+import com.group18.rental_web.repository.HouseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

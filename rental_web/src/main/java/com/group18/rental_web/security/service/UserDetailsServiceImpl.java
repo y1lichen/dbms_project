@@ -1,5 +1,7 @@
-package com.group18.rental_web.entities.user;
+package com.group18.rental_web.security.service;
 
+import com.group18.rental_web.model.User;
+import com.group18.rental_web.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

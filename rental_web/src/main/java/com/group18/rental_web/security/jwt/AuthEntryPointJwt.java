@@ -1,4 +1,4 @@
-package com.group18.rental_web.utils;
+package com.group18.rental_web.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

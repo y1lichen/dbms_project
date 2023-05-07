@@ -1,4 +1,4 @@
-package com.group18.rental_web.entities.post;
+package com.group18.rental_web.model;
 
 
 import javax.persistence.*;

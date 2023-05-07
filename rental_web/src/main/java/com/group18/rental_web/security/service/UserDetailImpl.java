@@ -1,6 +1,7 @@
-package com.group18.rental_web.entities.user;
+package com.group18.rental_web.security.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.group18.rental_web.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

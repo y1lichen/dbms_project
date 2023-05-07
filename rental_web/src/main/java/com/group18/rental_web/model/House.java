@@ -1,6 +1,6 @@
-package com.group18.rental_web.entities.house;
+package com.group18.rental_web.model;
 
-import com.group18.rental_web.entities.user.User;
+import com.group18.rental_web.model.User;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

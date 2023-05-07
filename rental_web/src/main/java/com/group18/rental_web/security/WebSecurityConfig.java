@@ -1,6 +1,8 @@
-package com.group18.rental_web.utils;
+package com.group18.rental_web.security;
 
-import com.group18.rental_web.entities.user.UserService;
+import com.group18.rental_web.security.jwt.AuthEntryPointJwt;
+import com.group18.rental_web.security.jwt.AuthTokenFilter;
+import com.group18.rental_web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
