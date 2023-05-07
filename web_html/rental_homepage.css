@@ -12,7 +12,8 @@
     /* min-height至少要有這個高度 */
     min-height: 100vh;
     width: 100%;
-    background-image:linear-gradient(rgba(102, 143, 246, 0.715), rgba(248, 113, 72, 0.46)),url(./images/header_photo.jpg);
+    /* background-image:linear-gradient(rgba(46, 186, 237, 0.614), rgba(253, 124, 124, 0.296)),url(./images/header_photo.jpg); */
+    background-image:linear-gradient(rgba(253, 190, 161, 0.656), rgba(5, 4, 4, 0.201)),url(./images/header.jpg);
     background-size: cover;
     background-position:center;
     position: relative;
@@ -21,7 +22,7 @@
 }
 
 .logo{
-    color: 	#d8c235;
+    color: 	#f1d691;
     font-size: 25px;
     font-weight: bolder;
     text-decoration: none;
@@ -29,11 +30,11 @@
 }
 
 .logo:hover{
-    color: 	#caf521;
+    color: 	#ebe9e5;
     text-decoration: none;   
 }
 
-nav{
+.nav{
     /* 由左至右 */
     display: flex;
     padding: 2% 6%;
@@ -41,6 +42,22 @@ nav{
     justify-content: space-between;
     /* 讓LOGO垂直至中(交錯軸) */
     align-items: center;
+    transition: all 0.5s;
+}
+
+.nav_fixtop {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.nav_scrolled{
+    height: 100px;
+    background-color: rgb(205, 113, 48);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) ;
+    /* 讓nar圖層最前面 */
+    z-index: 2;
 }
 
 .nav_links{
@@ -105,34 +122,65 @@ nav{
 }
 
 .login_title {
-    margin: 40px 0 10px;
-    font-size: 40px;
-    color: rgba(255, 255, 255, 0.979);
-    text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74);
-    text-align: left;
+    margin: 20px 0 10px;
+    padding-left: 20px;
+    font-size: 30px;
+    /* color: rgba(255, 255, 255, 0.979); */
+    /* text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74); */
+    color: rgba(78, 75, 75, 0.903);
+    text-align: center;
+    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+}
+
+
+input[type=text] {
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 251, 251, 0.734);
+}
+
+input[type=text]:focus {
+    background-color:rgb(243, 241, 239);
+    border-radius: 15px;
+}
+
+input::placeholder{
+    padding-left: 5px;
+    color: rgb(78, 76, 76);
+}
+
+.icon {
+    padding: 2px 2px;
+    color:rgba(255, 255, 255, 0.873);
+} 
+
+
+textarea:focus, input:focus{
+    outline: none;
 }
 
 .login_background{
-    /* margin: 50px; */
-    padding: 10px;
+    margin: 10%;
+    padding-top: 5px;
     width: 340px;
     height: 400px;
-    background-color: transparent;
+    background-color: rgba(228, 223, 223, 0.514);
     border-radius: 5px;
     box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
     
     /*login區塊對齊*/
     position:relative;
-    margin-left: 72%;
-    top: 75px;
+    /* margin-left: 72%; */
+    margin-right: 72%;
+    top: 20px;
     text-align:center; 
 }
 
 #username, #password{
-    width: 280px;
+    width: 240px;
     height: 45px;
     margin: 10px;
-    color: black;
 }
 
 .tab1{
@@ -151,9 +199,9 @@ nav{
     /* 行內區塊可以設寬高 */
     display: inline-block;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.979);
+    color: rgba(81, 78, 78, 0.979);
     border: 1px solid white;
-    margin-top: 2%;
+    margin-top: 10%;
     padding: 10px 30px;
     font-size: 16px;
     background: transparent;
@@ -175,50 +223,141 @@ nav{
     transition:0.5s;
 }
 
+/* .input-icons i {
+    position: absolute;
+    top: 108px;
+    left: 10px;
+    
+}*/
+
+
 nav .menu_btn{
     display: none;
 }
 
 /*------------ intro-------------- */
 
-.intro{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 50px;
 
+.intro{
+    /* margin: auto; */
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #f1d691;
 }
 
+.video{
+    /* z-index: -1; */
+    margin-top: 20px;
+}
 
+.intro_text{
+    margin-top: 50px;
+    text-align: left;
+}
 
+/*--------------  feature -------------- */
+.feature{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #f1d691;
+}
 
-/* try try try */
-/*
-header ul{
+.card_place{
+    margin-top: 10px;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 }
 
-header ul li {
-    list-style: none;
-    margin-left: 20px;
-} */
-/* 
-.header_container{
+.card{
+    width : 300px;
+    height: 220px;
+    margin: 60px 25px;
+    position: relative;
+    border: none;
+    /* card和photo都要圓角 */
+    border-radius: 12px;
+}
+.size{
     width: 100%;
-    
-    background-image:linear-gradient(rgba(240, 244, 177, 0.763), rgba(204, 74, 19, 0.352)),url(./images/header_photo2.jpg);
+    height: 100%;
+    position: absolute;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
+}
+
+.photo1{
+    background-image: url(./images/s2.jpg);
     background-size: cover;
     background-position:center;
-    position: relative;
+    opacity: 0.7;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(75, 9, 9);
+    text-shadow:3px 3px 2px rgba(238, 232, 232, 0.968);
+    /* card和photo都要圓角 */
+    border-radius: 12px;
+    
+}
 
-} */
+.photo2{
+    background-image: url(./images/review.jpg);
+    background-size: cover;
+    background-position:center;
+    opacity: 0.7;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(243, 232, 222);
+    text-shadow:3px 3px 2px rgba(33, 31, 31, 0.968);
+    border-radius: 12px;
+    
+}
+
+.photo3{
+    background-image: url(./images/roommate.jpg);
+    background-size: cover;
+    background-position:center;
+    opacity: 0.8;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(252, 249, 246);
+    text-shadow:3px 3px 2px rgba(6, 6, 6, 0.968);
+    border-radius: 12px;
+    
+}
+
+.front{
+    transform: rotateY(0deg);
+}
+.back{
+    background-color: rgb(250, 184, 69);
+    font-size: 25px;
+    transform: rotateY(-180deg);
+
+}
+.card:hover .front{
+    transform: rotateY(180deg);
+    border-radius: 12px;
+}
+.card:hover .back{
+    transform: rotateY(0deg);
+    border-radius: 12px;
+}
+
+/*--------------  recommend -------------- */
+.recommend{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #eadcb5;
+}
 
 
-
-
-@media (max-width:700px) {
+@media (max-width:600px) {
     .logo{
         font-size: 20px;
     }
@@ -279,6 +418,13 @@ header ul li {
         font-size: 20px;
         font-weight: 500;
         text-shadow:2px 1px 1px rgba(227, 222, 222, 0.788); 
+    }
+
+    .login_background{
+        /*login區塊對齊*/
+        position:relative;
+        margin: 20% auto;
+        text-align:center; 
     }
 
 }
