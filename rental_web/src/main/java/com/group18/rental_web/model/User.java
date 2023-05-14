@@ -3,7 +3,16 @@ package com.group18.rental_web.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
@@ -27,6 +36,26 @@ public class User {
     // 房東擁有的房子
     @OneToMany
     private Set<House> ownedHouse;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable( name = "user_roles",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
+
+    private Set<Role> roles = new HashSet<>();
+
+    //constructor
+    public User() {
+    }
+
+    public User(String email, String hashedPassword, String name, int gender,
+        String phone) {
+        this.email = email;
+        this.hashedPassword = hashedPassword;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -83,14 +112,6 @@ public class User {
     public void setOwnedHouse(Set<House> ownedHouse) {
         this.ownedHouse = ownedHouse;
     }
-
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "user_roles",
-				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
-
-	private Set<Role> roles = new HashSet<>();
 
     public Set<Role> getRoles() {
         return roles;
