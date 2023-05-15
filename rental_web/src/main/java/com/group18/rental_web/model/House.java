@@ -2,12 +2,10 @@ package com.group18.rental_web.model;
 
 import com.group18.rental_web.model.User;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class House {
 
     @Id
@@ -20,6 +18,7 @@ public class House {
 
     private String description;
 
+    @ManyToOne
     private User owner;
 
     private int rent_per_month;
@@ -28,7 +27,7 @@ public class House {
     private int rent_term;
 
     // 房內的租客
-    @OneToMany
+    @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
     private Set<User> residents;
 
     public House() {

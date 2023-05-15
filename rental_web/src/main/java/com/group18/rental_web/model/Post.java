@@ -4,11 +4,9 @@ package com.group18.rental_web.model;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
+@Entity
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +18,11 @@ public class Post {
 
     private Date postedTime;
 
+    @OneToOne
     // 發文者
     private User owner;
 
-    @OneToMany(orphanRemoval = true)
+    @OneToMany(mappedBy = "post", orphanRemoval = true)
     private Set<PostImage> postImages;
 
     public String getTitle() {
@@ -58,4 +57,11 @@ public class Post {
         return owner;
     }
 
+    public void setPostImages(Set<PostImage> postImages) {
+        this.postImages = postImages;
+    }
+
+    public Set<PostImage> getPostImages() {
+        return postImages;
+    }
 }
