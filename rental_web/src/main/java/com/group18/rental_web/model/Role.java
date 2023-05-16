@@ -1,38 +1,29 @@
 package com.group18.rental_web.model;
 
+public enum Role {
+    USER(0, "user"),
+    ADMIN(1, "admin");
 
-import javax.persistence.*;
+    private final int id;
+    private final String value;
 
-@Entity
-@Table(name = "roles")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public static boolean contains(String s) {
+        for (Role role: values()) {
+            if (role.value.equals(s)) return true;
+        }
+        return false;
+    }
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20)
-    private ERole name;
-
-    public Role() {}
-
-    public Role(ERole name) {
-        this.name = name;
+    Role(int id, String value) {
+        this.id = id;
+        this.value = value;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public ERole getName() {
-        return name;
-    }
-
-    public void setName(ERole name) {
-        this.name = name;
+    public String getValue() {
+        return value;
     }
 }

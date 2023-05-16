@@ -1,18 +1,7 @@
 package com.group18.rental_web.model;
 
-import java.util.HashSet;
+import javax.persistence.*;
 import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
@@ -40,11 +29,8 @@ public class User {
     @ManyToMany
     private Set<House> resideHouses;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable( name = "user_roles",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    @Transient
+    private Set<String> roles;
 
     //constructor
     public User() {
@@ -115,11 +101,11 @@ public class User {
         this.ownedHouse = ownedHouse;
     }
 
-    public Set<Role> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 }

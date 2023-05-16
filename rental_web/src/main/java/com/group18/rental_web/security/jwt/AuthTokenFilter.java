@@ -31,7 +31,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         String keyWord = "group18";
         String headerAuth = request.getHeader("Authentication");
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith(keyWord)) {
-           return headerAuth.substring(keyWord.length(), headerAuth.length());
+           return headerAuth.substring(keyWord.length());
         }
         return null;
     }

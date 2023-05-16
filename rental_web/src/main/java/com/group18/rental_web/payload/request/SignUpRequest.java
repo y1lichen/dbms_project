@@ -1,6 +1,6 @@
 package com.group18.rental_web.payload.request;
 
-import java.util.Set;
+import java.util.List;
 
 public class SignUpRequest {
     private String username;
@@ -12,6 +12,8 @@ public class SignUpRequest {
     private int gender;
 
     private String phone;
+
+    private List<String> roles;
 
     public String getUsername() {
         return username;
@@ -53,13 +55,11 @@ public class SignUpRequest {
         this.phone = phone;
     }
 
-    public Set<String> getRole() {
-        return role;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(Set<String> role) {
-        this.role = role;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
-
-    private Set<String> role;
 }

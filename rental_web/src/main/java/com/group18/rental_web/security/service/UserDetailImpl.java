@@ -12,14 +12,14 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UserDetailImpl implements UserDetails {
-    private int id;
-    private String email;
-    private String userName;
+    private final int id;
+    private final String email;
+    private final String userName;
 
     @JsonIgnore
-    private String password;
+    private final String password;
 
-    private Collection<? extends GrantedAuthority> authorities;
+    private final Collection<? extends GrantedAuthority> authorities;
 
     // constructor
     public UserDetailImpl(int id, String email, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
@@ -87,7 +87,7 @@ public class UserDetailImpl implements UserDetails {
 
     public static UserDetailImpl build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .map(role -> new SimpleGrantedAuthority(role))
                 .collect(Collectors.toList());
         return new UserDetailImpl(user.getId(), user.getEmail(), user.getName(), user.getHashedPassword(), authorities);
     }
