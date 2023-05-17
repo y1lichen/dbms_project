@@ -29,9 +29,6 @@ public class User {
     @ManyToMany
     private Set<House> resideHouses;
 
-    @Transient
-    private Set<String> roles;
-
     //constructor
     public User() {
     }
@@ -101,11 +98,4 @@ public class User {
         this.ownedHouse = ownedHouse;
     }
 
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
-    }
 }
