@@ -135,11 +135,7 @@
       </div>
     </section>
     
-    
-
-    
     <!-- recommend end -->
-
 
 
     <!-- my script -->
@@ -150,6 +146,7 @@
       var nav_links = document.getElementById("nav_links");
       var mbtn = document.getElementById("mbtn");
       var navbar = document.getElementById("navbar");
+      
       function showMenu(){
         nav_links.style.right = "0";
         // 因為右邊導覽列微透明所以要隱藏三條線
@@ -165,16 +162,27 @@
 
     // nav上方固定，scroll背景顏色改變(現在有個小問題:開起手機版後soild nav功能失效)
       const navEl = document.querySelector('.nav');
+      const navMeau = document.querySelector('.nav_links');
+      
       window.addEventListener('scroll',() => {
+
         if(window.scrollY > 550){
           navEl.classList.add('nav_scrolled');
+          // navMeau.top = window.screenY;
+          
         }else if(window.screenY <= 550){
           navEl.classList.remove('nav_scrolled');
         }
       });
+      
 
+      //抓現在滑到的位置，改變菜單的top
+      window.addEventListener('scroll',() =>{
+          navMeau.classList.bottom = window.screenY;
+      })
 
-
+      // 還是用jquery
+      //($function())  
 
 
     </script>
