@@ -13,6 +13,9 @@ public class JwtUtils {
 
     private String jwtSecret;
     public JwtUtils() {
+        /*
+        這是不能說的祕密，資料藏在.env檔中
+         */
         this.jwtSecret = dotenv.get("jwtSecret");
     }
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
