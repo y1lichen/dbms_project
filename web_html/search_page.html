@@ -11,20 +11,27 @@
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-
-
-
-
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- 輪播元素套件 -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.css' />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+    
 
     <!-- my rental_homepage.css -->
     <link rel="stylesheet" href="search_page.css">
 
     <!-- 文字動畫 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
 
 </head>
 <body>
@@ -33,8 +40,8 @@
         <a href="#" class="logo"><i class="fa-solid fa-house">logo</i></a>
         <div class="nav_links" id="nav_links">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Search</a></li>
+            <li><a href="./rental_homepage.html">Home</a></li>
+            <li><a href="./search_page.html">Search</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Personal</a></li>
           </ul>
@@ -99,13 +106,12 @@
                                 </a>
                                 <!-- 搜尋按鈕end -->
                             </div>
-
                         </div>
-                        
-                        
                     </div>
                 </div>
-                 <!-- filter end -->
+                <!-- filter end -->
+
+                <!-- 正文 -->
 
                 <div class="col-md-4 col-sm-6">
                     <!-- 1 -->
@@ -343,30 +349,86 @@
                     </div>
                     <!-- 15 end -->
                 </div>
+                <!-- 正文end -->
+
+                 <!-- demand post -->
+                 <div class="container p-5">
+                    <h3 class="post_title">特別需求發文 Special Post</h3>
+                    <div class="slider responsive">
+                        <!-- 之後要抓使用者發出的post中的文字  -->
+
+                        <!-- 1 -->
+                        <div class="post_content" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="card-link">聯絡發文者 Contact</a>
+                            </div>
+                        </div>
+                        <!-- 1  -->
+
+                        <!-- 2 -->
+                        <div class="post_content" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="card-link">聯絡發文者 Contact</a>
+                            </div>
+                        </div>
+                        <!-- 2 -->
+
+                        <!-- 3 可是照片之間padding失效 -->
+                        <div class="pho">
+
+                        </div>
+                        <!-- 3 -->
+
+                        <!-- 4 -->
+                        <div class="pho">
+                            
+                        </div>
+                        <!-- 4 -->
+
+                        <!-- 5 -->
+                        <div class="pho">
+                            
+                        </div>
+                        <!-- 5 -->
+
+                        <!-- 6 -->
+                        <div class="pho">
+                            
+                        </div>
+                        <!-- 6 -->
+
+                    </div>
+                </div>
+                <!-- demand post end -->
                
             </div>
-            
         </div>
     </section>
     
     
     <script>
-      var nav_links = document.getElementById("nav_links");
-      var mbtn = document.getElementById("mbtn");
-      var navbar = document.getElementById("navbar");
-      
-      function showMenu(){
-        nav_links.style.right = "0";
-        // 因為右邊導覽列微透明所以要隱藏三條線
-        mbtn.style.display = "none";
-        navbar.classList.remove("nav_fixtop");
-      }
+        var nav_links = document.getElementById("nav_links");
+        var mbtn = document.getElementById("mbtn");
+        var navbar = document.getElementById("navbar");
+        
+        function showMenu(){
+            nav_links.style.right = "0";
+            // 因為右邊導覽列微透明所以要隱藏三條線
+            mbtn.style.display = "none";
+            navbar.classList.remove("nav_fixtop");
+        }
 
-      function hideMenu(){
-        nav_links.style.right = "-200px";
-        mbtn.style.display = "block";
-        navbar.classList.remove("nav_fixtop");
-      }
+        function hideMenu(){
+            nav_links.style.right = "-200px";
+            mbtn.style.display = "block";
+            navbar.classList.remove("nav_fixtop");
+        }
 
       // Wrap every letter in a span 篩選器標題動畫效果
         var textWrapper = document.querySelector('.ml11 .letters');
@@ -401,6 +463,40 @@
             delay: 1000
         });
       //  end
+
+      //特別發文--輪播套件
+        $(".responsive").slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+            },
+            {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+            }
+        ]
+        });
 
 
     </script>

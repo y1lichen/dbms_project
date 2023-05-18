@@ -191,7 +191,7 @@ line-height: 1em;
 
 .card_pic{
    transform:scale(1,1);
-   transition: all .8s ease-out;
+   transition: all .7s ease-out;
 }
 
 .card_pic:hover{
@@ -219,7 +219,6 @@ line-height: 1em;
     background-color: transparent;
     border: none;
     opacity: .7;
-
     transition: all .3s ease;
     position: relative;
     bottom: 0;
@@ -231,7 +230,6 @@ line-height: 1em;
 }
 
 /*  */
-
 
 .more_btn_style{
     color: #EC7357;
@@ -245,10 +243,32 @@ line-height: 1em;
     transition: all .3s;
 }
 
+.post_title{
+    text-align: center;
+    text-shadow: 1px 1px 0 rgb(255, 251, 251);
+}
+
+.slider{
+    margin-top:5%;
+}
+
+.post_content{
+    width: 200px;
+}
+
+.pho{
+    background-image:url(https://picsum.photos/id/534/200/200);
+    background-repeat: no-repeat;
+    position: relative;
+    height: 200px;
+    width: 100%;
+    opacity: 0.4;
+}
 
 
+/* 553 */
 
-/*  */
+
 @media (max-width:700px) {
     .logo{
         font-size: 20px;
