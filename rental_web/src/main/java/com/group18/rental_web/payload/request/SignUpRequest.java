@@ -13,7 +13,14 @@ public class SignUpRequest {
 
     private String phone;
 
-    private List<String> roles;
+    public SignUpRequest(String username, String email, String password, int gender, String phone) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.phone = phone;
+    }
+
 
     public String getUsername() {
         return username;
@@ -55,11 +62,4 @@ public class SignUpRequest {
         this.phone = phone;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
 }

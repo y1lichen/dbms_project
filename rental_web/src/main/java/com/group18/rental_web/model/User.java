@@ -22,6 +22,8 @@ public class User {
 
     private String phone;
 
+    private String token;
+
     // 房東擁有的房子
     @OneToMany
     private Set<House> ownedHouse;
@@ -98,4 +100,11 @@ public class User {
         this.ownedHouse = ownedHouse;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
