@@ -24,10 +24,10 @@
 }
 
 .nav_fixtop {
-    overflow: hidden;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+    /* overflow: hidden; */
+    position: fixed; 
+    top: 0; 
+    width: 100%;
     z-index: 100;
 }
 
@@ -72,11 +72,12 @@
 /*子安新增 dropdown*/
 /*想不出如何將dropdown show 在最上面層，檢查過z-index*/
 /* dropdown*/
-.dropdown {
-    position: relative;
+
+/* .dropdown {
+    position: absolute;
     display: inline-block;
     z-index: 150;
-}
+} */
 
 /* dropdown 內容*/
 .dropdown-content {

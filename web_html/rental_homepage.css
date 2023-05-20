@@ -53,7 +53,7 @@
 }
 
 .nav_scrolled{
-    height: 100px;
+    height: 120px;
     background-color: rgb(205, 113, 48);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) ;
     /* 讓nar圖層最前面 */
