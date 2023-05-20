@@ -1,5 +1,6 @@
 package com.group18.rental_web.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.group18.rental_web.model.House;
@@ -22,5 +23,9 @@ public class HouseService {
 
     public Optional<House> getHouseById(int id) {
         return houseRepo.findById(id);
+    }
+
+    public List<House> getAllHouses() {
+        return houseRepo.findAll();
     }
 }
