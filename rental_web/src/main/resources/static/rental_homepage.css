@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Sans+TC:wght@500&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{
+    font-family: 'Poppins', cursive,'Noto Sans TC';
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*------------ header + nav-------------- */
+.header{
+    /* min-height至少要有這個高度 */
+    min-height: 100vh;
+    width: 100%;
+    /* background-image:linear-gradient(rgba(46, 186, 237, 0.614), rgba(253, 124, 124, 0.296)),url(./images/header_photo.jpg); */
+    background-image:linear-gradient(rgba(253, 190, 161, 0.656), rgba(5, 4, 4, 0.201)),url(./images/header.jpg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
+    /* 超過header畫面的隱藏 */
+    overflow: hidden;
+}
+
+.logo{
+    color: 	#f1d691;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.logo:hover{
+    color: 	#ebe9e5;
+    text-decoration: none;   
+}
+
+.nav{
+    /* 由左至右 */
+    display: flex;
+    padding: 2% 6%;
+    /* 每個元素左右均分 */
+    justify-content: space-between;
+    /* 讓LOGO垂直至中(交錯軸) */
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.nav_fixtop {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.nav_scrolled{
+    height: 100px;
+    background-color: rgb(205, 113, 48);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) ;
+    /* 讓nar圖層最前面 */
+    z-index: 2;
+}
+
+.nav_links{
+    /* 大小same */
+    flex: 1;
+    text-align: right;
+}
+
+.nav_links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav_links ul li a{
+    /* nav刻字設計 */
+    color: aliceblue;
+    text-shadow: -1px -1px 0 black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* 底線色塊偽元素 */
+.nav_links ul li::after{
+    content: "";
+    /* 先設為寬度0未顯示 */
+    width: 0%;
+    height: 2px;
+    background:#f99822;
+    display:block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav_links ul li:hover::after{
+    /* 等游標移上去再顯示 */
+    width: 100%;
+}
+
+.header_title{
+    /* 跳脫元素位於前頁面圖層 */
+    position: absolute;
+    width: 90%;
+    /* 設定置中於橫圖 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}  
+
+.header_title h1{
+    font-size: 55px;
+    color: rgba(255, 255, 255, 0.979);
+    text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74);
+}
+
+.header_title p {
+    margin: 40px 0 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.979);
+}
+
+/* 旋轉效果 */
+@keyframes tipsy {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+  }
+  
+  .header_action {
+    color: #fffbf1;
+    text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
+    font-size: 55px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: -3px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .header_action:before,
+  .header_action:after {
+    content: '';
+    padding: .9em .4em;
+    position: absolute;
+    left: 50%;
+    width: 30%;
+    top: 50%;
+    display: block;
+    border: 15px solid #f8c52cbe;
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    animation: 10s infinite alternate ease-in-out tipsy;
+  }
+  
+  .header_action:before {
+    border-color: #bf9c31be #bf9c31be rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    z-index: -1;
+  }
+  
+  .header_action:after {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #bf9c31be #bf9c31be;
+    box-shadow: 10px 12px 10px rgba(46, 46, 49, .8);
+  }
+
+
+/* 登入 */
+.login_title {
+    margin: 20px 0 10px;
+    padding-left: 20px;
+    font-size: 30px;
+    /* color: rgba(255, 255, 255, 0.979); */
+    /* text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74); */
+    color: rgba(78, 75, 75, 0.903);
+    text-align: center;
+    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+}
+
+
+input[type=text] {
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 251, 251, 0.734);
+}
+
+input[type=text]:focus {
+    background-color:rgb(243, 241, 239);
+    border-radius: 15px;
+}
+
+input::placeholder{
+    padding-left: 5px;
+    color: rgb(78, 76, 76);
+}
+
+.icon {
+    padding: 2px 2px;
+    color:rgba(255, 255, 255, 0.873);
+} 
+
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.login_background{
+    margin: 10%;
+    padding-top: 5px;
+    width: 340px;
+    height: 400px;
+    background-color: rgba(228, 223, 223, 0.514);
+    border-radius: 5px;
+    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+    
+    /*login區塊對齊*/
+    position:relative;
+    /* margin-left: 72%; */
+    margin-right: 72%;
+    top: 20px;
+    text-align:center; 
+}
+
+#username, #password{
+    width: 240px;
+    height: 45px;
+    margin: 10px;
+}
+
+.tab1{
+    padding: 3%;
+}
+
+.tab2{
+    padding: 2%;
+}
+
+.sign_up_background{
+    text-align: center;
+}
+
+.sign_up_btn{
+    /* 行內區塊可以設寬高 */
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(81, 78, 78, 0.979);
+    border: 1px solid white;
+    margin-top: 10%;
+    padding: 10px 30px;
+    font-size: 16px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    /*button長寬*/
+    width: 280px;
+    height: 45px;
+}
+
+.sign_up_btn:hover{
+    text-decoration: none;
+    border:none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgba(147, 0, 0, 0.796);
+    background:rgb(237, 204, 144);
+    border-radius: 10px;
+    transition:0.5s;
+}
+
+/* .input-icons i {
+    position: absolute;
+    top: 108px;
+    left: 10px;
+    
+}*/
+
+
+nav .menu_btn{
+    display: none;
+}
+
+/*------------ intro-------------- */
+
+
+.intro{
+    /* margin: auto; */
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #f1d691;
+}
+
+.video{
+    /* z-index: -1; */
+    margin-top: 20px;
+}
+
+.intro_text{
+    margin-top: 50px;
+    text-align: left;
+}
+
+/*--------------  feature -------------- */
+.feature{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #f1d691;
+}
+
+.card_place{
+    margin-top: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.card{
+    width : 300px;
+    height: 220px;
+    margin: 60px 25px;
+    position: relative;
+    border: none;
+    /* card和photo都要圓角 */
+    border-radius: 12px;
+}
+.size{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
+}
+
+.photo1{
+    background-image: url(./images/s2.jpg);
+    background-size: cover;
+    background-position:center;
+    opacity: 0.7;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(75, 9, 9);
+    text-shadow:3px 3px 2px rgba(238, 232, 232, 0.968);
+    /* card和photo都要圓角 */
+    border-radius: 12px;
+    
+}
+
+.photo2{
+    background-image: url(./images/review.jpg);
+    background-size: cover;
+    background-position:center;
+    opacity: 0.7;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(243, 232, 222);
+    text-shadow:3px 3px 2px rgba(33, 31, 31, 0.968);
+    border-radius: 12px;
+    
+}
+
+.photo3{
+    background-image: url(./images/roommate.jpg);
+    background-size: cover;
+    background-position:center;
+    opacity: 0.8;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    color: rgb(252, 249, 246);
+    text-shadow:3px 3px 2px rgba(6, 6, 6, 0.968);
+    border-radius: 12px;
+    
+}
+
+.front{
+    transform: rotateY(0deg);
+}
+.back{
+    background-color: rgb(250, 184, 69);
+    font-size: 25px;
+    transform: rotateY(-180deg);
+
+}
+.card:hover .front{
+    transform: rotateY(180deg);
+    border-radius: 12px;
+}
+.card:hover .back{
+    transform: rotateY(0deg);
+    border-radius: 12px;
+}
+
+/*--------------  recommend -------------- */
+.recommend{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    background-color: #eadcb5;
+}
+
+
+@media (max-width:700px) {
+    .logo{
+        font-size: 20px;
+    }
+
+    .header_title h1{
+        font-size: 45px;
+    }
+
+    .header_title p{
+        font-size: 8px;
+    }
+
+    .nav_links ul li{
+        display: block;
+    }
+
+    .nav_links{
+        /* 這邊如何判斷按出來的菜單在旁邊 */
+        position: absolute;
+        background: #f8c52cbe;
+        height: 100vh;
+        width: 200px;
+        /* 先收回去(隱藏) */
+        top:0px;
+        right: -200px;
+        text-align: left;
+        /* 立體空間重疊 */
+        z-index: 2;
+        transition: 1s;
+        
+        
+    }
+
+    nav .menu_btn{
+        display: block;
+        color: #ffffff;
+        margin: 10px;
+        font-size:22px;
+        cursor: pointer;
+    }
+
+    .nav_links ul{
+        padding: 30px;
+    }
+
+    .nav_links ul li a{
+       color: #ffffff;
+       text-shadow:2px 1px 1px rgba(0, 0, 0, 0.74);
+       transition: 0.5s; 
+    }
+
+    /* 取消底線色塊偽元素 */
+    .nav_links ul li::after{
+        display: none;
+    }
+
+    .nav_links ul li a:hover{
+        /* 等游標移上去再顯示 */
+        color: rgb(158, 55, 232);
+        font-size: 20px;
+        font-weight: 500;
+        text-shadow:2px 1px 1px rgba(227, 222, 222, 0.788); 
+    }
+
+    .login_background{
+        /*login區塊對齊*/
+        position:relative;
+        margin: 40% auto;
+        text-align:center; 
+    }
+
+}
