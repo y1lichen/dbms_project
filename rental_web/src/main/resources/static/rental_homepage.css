@@ -13,7 +13,7 @@
     min-height: 100vh;
     width: 100%;
     /* background-image:linear-gradient(rgba(46, 186, 237, 0.614), rgba(253, 124, 124, 0.296)),url(./images/header_photo.jpg); */
-    background-image:linear-gradient(rgba(253, 190, 161, 0.656), rgba(5, 4, 4, 0.201)),url(./images/header.jpg);
+    background-image:linear-gradient(rgba(253, 190, 161, 0.656), rgba(5, 4, 4, 0.201)),url(images/header.jpg);
     background-size: cover;
     background-position:center;
     position: relative;
@@ -344,7 +344,7 @@ nav .menu_btn{
 }
 
 .photo1{
-    background-image: url(./images/s2.jpg);
+    background-image: url(images/s2.jpg);
     background-size: cover;
     background-position:center;
     opacity: 0.7;
@@ -357,7 +357,7 @@ nav .menu_btn{
 }
 
 .photo2{
-    background-image: url(./images/review.jpg);
+    background-image: url(images/review.jpg);
     background-size: cover;
     background-position:center;
     opacity: 0.7;
@@ -369,7 +369,7 @@ nav .menu_btn{
 }
 
 .photo3{
-    background-image: url(./images/roommate.jpg);
+    background-image: url(images/roommate.jpg);
     background-size: cover;
     background-position:center;
     opacity: 0.8;
