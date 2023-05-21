@@ -1,24 +1,33 @@
 package com.group18.rental_web.controller;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.payload.request.CreateHouseRequest;
+import com.group18.rental_web.repository.UserRepo;
 import com.group18.rental_web.service.HouseService;
+import com.group18.rental_web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/house")
 public class HouseController {
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private HouseService houseService;
+    @Autowired
+    private UserRepo userRepo;
 
     @GetMapping("")
     public ResponseEntity<?> getHouseDetail(@RequestParam(name="id", required = false) Optional<Integer> optId) {
@@ -33,9 +42,10 @@ public class HouseController {
         return ResponseEntity.status(HttpStatus.OK).body(optHouse.get());
     }
 
-    @GetMapping("create")
-    public String getCreateHousePage() {
-        return "posthouse_page";
+    @GetMapping("/create")
+    public String getCreateHousePage(HttpSession session) {
+        return userService.checkIsLogin("posthouse_page", session);
+//        return "posthouse_page";
     }
 
     @PostMapping("/create")

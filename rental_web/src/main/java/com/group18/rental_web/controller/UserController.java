@@ -2,18 +2,14 @@ package com.group18.rental_web.controller;
 
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.payload.request.LoginRequest;
-import com.group18.rental_web.payload.response.LoginResponse;
 import com.group18.rental_web.repository.UserRepo;
 import com.group18.rental_web.service.UserService;
 import com.group18.rental_web.utils.Encoder;
 import com.group18.rental_web.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -28,7 +24,7 @@ public class UserController {
 
     private Encoder encoder = new Encoder();
 
-    private JwtUtils jwtUtils = new JwtUtils();
+//    private JwtUtils jwtUtils = new JwtUtils();
 
     @GetMapping("/login")
     public String getLoginPage() {
@@ -43,14 +39,14 @@ public class UserController {
 
     @PostMapping("/signin")
     public String authenticateUser(@Valid LoginRequest request, HttpSession session) {
+        session.setAttribute("email", "");
         Optional<User> optUser = userRepo.findByEmail(request.getEmail());
         if (optUser.isEmpty()) {
             return "User not found.";
         }
         User user = optUser.get();
         if (encoder.matches(request.getPassword(), user.getHashedPassword())) {
-            String token = jwtUtils.getJwts(request.getEmail());
-            session.setAttribute("token", token);
+            session.setAttribute("email", user.getEmail());
             return "personal_page";
         }
         return "Unable to signin";
