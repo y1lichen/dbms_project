@@ -1,9 +1,9 @@
 package com.group18.rental_web.controller;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import com.group18.rental_web.model.House;
+import com.group18.rental_web.model.User;
 import com.group18.rental_web.payload.request.CreateHouseRequest;
 import com.group18.rental_web.repository.UserRepo;
 import com.group18.rental_web.service.HouseService;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -49,10 +48,17 @@ public class HouseController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createHouse(@Valid @RequestBody CreateHouseRequest request) {
-        House house = new House();
+    public String createHouse(@Valid @RequestBody CreateHouseRequest request) {
+        Optional<User> optUser = userService.getUserByEmail(request.getOwnerEmail());
+        if (optUser.isEmpty()) {
+            return "rental_homepage";
+        }
+        House house = new House(request.getTitle(), request.getAddress(),
+                request.getCapacity(), request.getDescription(),
+                optUser.get(), request.getMonthly_fee(),
+                request.getRent_term(), request.getGender());
         houseService.saveHouse(house);
-        return ResponseEntity.status(HttpStatus.OK).body("successfully add house");
+        return "personal_page";
     }
 
     @DeleteMapping("")

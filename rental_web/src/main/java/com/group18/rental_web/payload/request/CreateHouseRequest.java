@@ -5,8 +5,9 @@ public class CreateHouseRequest {
     private String address;
     private int capacity;
     private String description;
-    private String monthly_fee;
-    private String gender;
+    private int monthly_fee;
+    private int gender;
+    private int rent_term;
     private int floor;
     // 用owner email綁定owner
     private String ownerEmail;
@@ -43,19 +44,19 @@ public class CreateHouseRequest {
         this.description = description;
     }
 
-    public String getMonthly_fee() {
+    public int getMonthly_fee() {
         return monthly_fee;
     }
 
-    public void setMonthly_fee(String monthly_fee) {
+    public void setMonthly_fee(int monthly_fee) {
         this.monthly_fee = monthly_fee;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
@@ -73,5 +74,13 @@ public class CreateHouseRequest {
 
     public void setOwnerEmail(String ownerEmail) {
         this.ownerEmail = ownerEmail;
+    }
+
+    public void setRent_term(int rent_term) {
+        this.rent_term = rent_term;
+    }
+
+    public int getRent_term() {
+        return rent_term;
     }
 }

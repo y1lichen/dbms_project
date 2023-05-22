@@ -11,7 +11,14 @@ public class House {
     }
 
     public House(String title, String address, int capacity, String description,
-                 String userEmail, int rentPerMonth, int rentTerm, int gender) {
+                 User owner, int rentPerMonth, int rentTerm, int gender) {
+        this.title = title;
+        this.address = address;
+        this.capacity = capacity;
+        this.description = description;
+        this.owner = owner;
+        this.rentPerMonth = rentPerMonth;
+        this.rentTerm = rentTerm;
     }
 
     @Id
