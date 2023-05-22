@@ -10,7 +10,8 @@ public class CreateHouseRequest {
     private int rent_term;
     private int floor;
     // 用owner email綁定owner
-    private String ownerEmail;
+    // 不用email了，從sesssion拿
+    // private String ownerEmail;
 
     public String getTitle() {
         return title;
@@ -68,13 +69,13 @@ public class CreateHouseRequest {
         this.floor = floor;
     }
 
-    public String getOwnerEmail() {
-        return ownerEmail;
-    }
+    // public String getOwnerEmail() {
+    //     return ownerEmail;
+    // }
 
-    public void setOwnerEmail(String ownerEmail) {
-        this.ownerEmail = ownerEmail;
-    }
+    // public void setOwnerEmail(String ownerEmail) {
+    //     this.ownerEmail = ownerEmail;
+    // }
 
     public void setRent_term(int rent_term) {
         this.rent_term = rent_term;
