@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+body{
+    background-color: #FDD692 ;
+}
+
 /*logo*/
 .logo{
     color: 	#f1d691;
@@ -117,7 +121,8 @@
 
 
 .search{
-    background-color: #FDD692;
+    /* background-color: #FDD692; */
+    /* 因為已經把整個body背景設定好了 */
     position: relative;
     z-index: 1;
 }
@@ -128,10 +133,16 @@
     /* align-items: center; */
     background-color:  #d1a74bca;
     margin-top: 15%;
+    margin-bottom: 15%;
     height: 800px;
     width:1100px;
     border-radius: 20px;
     padding: 10% 8%;
+}
+
+.detail{
+    color: #ffffff;
+    text-shadow:3px 1px 2px rgba(0, 0, 0, 0.74);
 }
 
 img{
@@ -144,4 +155,16 @@ img{
     position: relative;
     /* 超過header畫面的隱藏 */
     overflow: hidden;
+}
+
+.line{
+    width: 50%;
+    height: 100px;
+    border-top: dotted black;
+    padding-top: 1%;
+    margin-top: 2%;
+}
+
+.contact_btn{
+    margin-top: 10%;
 }
