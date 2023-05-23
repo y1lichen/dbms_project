@@ -73,11 +73,11 @@
 /*想不出如何將dropdown show 在最上面層，檢查過z-index*/
 /* dropdown*/
 
-/* .dropdown {
+.dropdown {
     position: absolute;
     display: inline-block;
     z-index: 150;
-} */
+}
 
 /* dropdown 內容*/
 .dropdown-content {
@@ -296,7 +296,7 @@ line-height: 1em;
 }
 
 .pho{
-    background-image:url(https://picsum.photos/id/534/200/200);
+    background-image:url(./images/3.jpg);
     background-repeat: no-repeat;
     position: relative;
     height: 200px;
