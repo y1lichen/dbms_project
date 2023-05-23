@@ -5,6 +5,7 @@ import com.group18.rental_web.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
@@ -20,7 +21,20 @@ public class UserService {
         return repo.findById(id);
 	}
 
+    public Optional<User> getUserByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
 	public void deleteUser(User user) {
 		repo.delete(user);
 	}
+
+    public String checkIsLogin(String path, HttpSession session)  {
+        String email = (String) session.getAttribute("email");
+        if (email == null || email.equals("")) {
+            // 沒有登入的話就導回登入頁
+            return "rental_homepage";
+        }
+        return path;
+    }
 }

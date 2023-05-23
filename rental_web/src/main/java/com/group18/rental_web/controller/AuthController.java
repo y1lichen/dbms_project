@@ -37,7 +37,7 @@ public class AuthController {
         User user = optUser.get();
         if (encoder.matches(request.getPassword(), user.getHashedPassword())) {
             String token = jwtUtils.getJwts(request.getEmail());
-            return ResponseEntity.ok(new LoginResponse(token, request.getEmail()));
+            return ResponseEntity.ok(new LoginResponse(user.getId(), token, request.getEmail()));
         }
         return ResponseEntity.badRequest().body("Error: unable to signin.");
     }

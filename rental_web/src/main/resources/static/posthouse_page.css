@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Sans+TC:wght@500&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{
+    font-family: 'Poppins', cursive,'Noto Sans TC';
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*logo*/
+.logo{
+    color: 	#f1d691;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.logo:hover{
+    color: 	#ebe9e5;
+    text-decoration: none;   
+}
+
+
+/* nav */
+.nav{
+    /* 由左至右 */
+    display: flex;
+    padding: 2% 6%;
+    /* 每個元素左右均分 */
+    justify-content: space-between;
+    /* 讓LOGO垂直至中(交錯軸) */
+    align-items: center;
+    transition: all 0.5s;
+    background-color: rgb(205, 113, 48);
+    position: relative;
+    z-index: 50;
+}
+
+.nav_fixtop {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 100;
+}
+
+.nav_links{
+    /* 大小same */
+    flex: 1;
+    text-align: right;
+}
+
+.nav_links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav_links ul li a{
+    /* nav刻字設計 */
+    color: aliceblue;
+    text-shadow: -1px -1px 0 black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* 底線色塊偽元素 */
+.nav_links ul li::after{
+    content: "";
+    /* 先設為寬度0未顯示 */
+    width: 0%;
+    height: 2px;
+    background:#f9b822;
+    display:block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav_links ul li:hover::after{
+    /* 等游標移上去再顯示 */
+    width: 100%;
+}
+
+
+/* dropdown*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 150;
+}
+
+/* dropdown 內容*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dea00e37;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 200;
+}
+
+.dropdown-content a {
+    text-align: left;
+    padding: 6px 9px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown content on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+/* post */
+.post{
+    background-color: #FDD692;
+    position: relative;
+    z-index: 1;
+}
+
+.post_tab{
+    margin-top: 5%;
+}
+
+.post_title {
+    margin: 20px 0 10px;
+    padding-left: 20px;
+    font-size: 30px;
+    /* color: rgba(255, 255, 255, 0.979); */
+    /* text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74); */
+    color: rgba(78, 75, 75, 0.903);
+    text-align: center;
+    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+}
+
+.little_title{
+    font-size: 20px;
+    color: rgba(78, 75, 75, 0.903);
+    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+}
+
+input[type=text] {
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 251, 251, 0.734);
+}
+
+input[type=text]:focus {
+    background-color:rgb(243, 241, 239);
+    border-radius: 15px;
+}
+
+input::placeholder{
+    padding-left: 5px;
+    color: rgb(78, 76, 76);
+    font-size: 20px;
+}
+
+.icon {
+    padding: 2px 2px;
+    color:rgba(255, 255, 255, 0.873);
+} 
+
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.post_background{
+    margin: 10%;
+    padding-top: 5px;
+    width: 1000px;
+    height: 1250px;
+    background-color: rgba(228, 223, 223, 0.514);
+    border-radius: 5px;
+    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+    
+    /*login區塊對齊*/
+    position:relative;
+    margin-left: 5%;
+    margin-right: 5%;
+    top: 20px;
+    /* text-align:center;  */
+}
+
+.input_information{
+    text-align:left; 
+    margin-left: 15%;
+}
+
+#postname, #address, #monthly_fee, #number_of_people{
+    width: 700px;
+    height: 50px;
+    margin: 10px;
+}
+
+.roomtype, .gender, .floor{
+    color: rgb(78, 76, 76);
+    font-size: 20px;
+    padding: 1%;
+}
+
+#room_to_share, #studio, #male, #female, #both, #first_floor, #second_floor, #third_floor, #fourth_floor, #above_fourth_floor{
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+}
+
+input[type='radio']:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #ffa500;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.tab1{
+    padding: 2%;
+}
+
+.tab2{
+    padding: 1%;
+}
+
+.submit_background{
+    text-align: center;
+}
+
+.submit_btn{
+    /* 行內區塊可以設寬高 */
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(81, 78, 78, 0.979);
+    border: 1px solid white;
+    margin-top: 10%;
+    padding: 10px 30px;
+    font-size: 16px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    /*button長寬*/
+    width: 360px;
+    height: 45px;
+}
+
+.submit_btn:hover{
+    text-decoration: none;
+    border:none;
+    font-size: 18px;
+    font-weight: bolder;
+    color: rgba(147, 0, 0, 0.796);
+    background:rgb(237, 204, 144);
+    border-radius: 10px;
+    transition:0.5s;
+}
+
+/* .input-icons i {
+    position: absolute;
+    top: 108px;
+    left: 10px;
+    
+}*/
+
+
+nav .menu_btn{
+    display: none;
+}
+
+
+/* 553 */
+
+
+@media (max-width:700px) {
+    .logo{
+        font-size: 20px;
+    }
+
+
+    .nav_links ul{
+        padding: 30px;
+    }
+
+    .nav_links ul li a{
+       color: #ffffff;
+       text-shadow:2px 1px 1px rgba(0, 0, 0, 0.74);
+       transition: 0.5s; 
+    }
+
+    /* 取消底線色塊偽元素 */
+    .nav_links ul li::after{
+        display: none;
+    }
+
+    .nav_links ul li a:hover{
+        /* 等游標移上去再顯示 */
+        color: rgb(158, 55, 232);
+        font-size: 20px;
+        font-weight: 500;
+        text-shadow:2px 1px 1px rgba(227, 222, 222, 0.788); 
+    }
+
+    .filter{
+        margin-top: 40%;
+        height: 200px;
+        width:auto;
+    }
+    
+}
