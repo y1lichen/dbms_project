@@ -1,0 +1,10 @@
+.cache
+.idea
+.project
+.settings
+.jar
+Thumbs.db
+.DS_Store
+.DS_Store?
+*.sublime-project
+*.sublime-workspace

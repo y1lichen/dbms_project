@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -59,8 +58,13 @@ public class HouseController {
 //        return "posthouse_page";
     }
 
+    @GetMapping("/search")
+    public String getSearchPage(HttpSession session) {
+        return userService.checkIsLogin("search_page", session);
+    }
+
     @PostMapping("/create")
-    public String createHouse(@Valid @RequestBody CreateHouseRequest request, HttpSession session) {
+    public String createHouse(@Valid CreateHouseRequest request, HttpSession session) {
         String email = getEmailFromSession(session);
         if (email == null) {
             return "retal_homepage";
@@ -75,7 +79,7 @@ public class HouseController {
                 request.getRent_term(), request.getGender());
         houseService.saveHouse(house);
         System.out.println("house post created.");
-        return "personal_page";
+        return "search_page";
     }
 
     @DeleteMapping("")
