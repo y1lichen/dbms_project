@@ -7,3 +7,164 @@
     margin: 0;
     padding: 0;
 }
+
+body{
+    background-color: #FDD692 ;
+}
+
+/*logo*/
+.logo{
+    color: 	#f1d691;
+    font-size: 25px;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.logo:hover{
+    color: 	#ebe9e5;
+    text-decoration: none;   
+}
+
+
+/* nav */
+.nav{
+    /* 由左至右 */
+    display: flex;
+    padding: 2% 6%;
+    /* 每個元素左右均分 */
+    justify-content: space-between;
+    /* 讓LOGO垂直至中(交錯軸) */
+    align-items: center;
+    transition: all 0.5s;
+    background-color: rgb(205, 113, 48);
+    position: relative;
+    z-index: 50;
+}
+
+.nav_fixtop {
+    /* overflow: hidden; */
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 100;
+}
+
+.nav_links{
+    /* 大小same */
+    flex: 1;
+    text-align: right;
+}
+
+.nav_links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav_links ul li a{
+    /* nav刻字設計 */
+    color: aliceblue;
+    text-shadow: -1px -1px 0 black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* 底線色塊偽元素 */
+.nav_links ul li::after{
+    content: "";
+    /* 先設為寬度0未顯示 */
+    width: 0%;
+    height: 2px;
+    background:#f9b822;
+    display:block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav_links ul li:hover::after{
+    /* 等游標移上去再顯示 */
+    width: 100%;
+}
+
+
+/* dropdown*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 150;
+}
+
+/* dropdown 內容*/
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dea00e37;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 200;
+}
+
+.dropdown-content a {
+    text-align: left;
+    padding: 6px 9px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown content on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.search{
+    /* background-color: #FDD692; */
+    /* 因為已經把整個body背景設定好了 */
+    position: relative;
+    z-index: 1;
+}
+
+.itembox{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color:  #d1a74bca;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    height: 800px;
+    width:1100px;
+    border-radius: 20px;
+    padding: 10% 8%;
+}
+
+.detail{
+    color: #ffffff;
+    text-shadow:3px 1px 2px rgba(0, 0, 0, 0.74);
+}
+
+img{
+    min-height:40vh;
+    width: 100%;
+    /* background-image:linear-gradient(rgba(46, 186, 237, 0.614), rgba(253, 124, 124, 0.296)),url(./images/header_photo.jpg); */
+    background-image:linear-gradient(rgba(253, 190, 161, 0.656), rgba(5, 4, 4, 0.201)),url(./images/header.jpg);
+    background-size: cover;
+    background-position:center;
+    position: relative;
+    /* 超過header畫面的隱藏 */
+    overflow: hidden;
+}
+
+.line{
+    width: 50%;
+    height: 100px;
+    border-top: dotted black;
+    padding-top: 1%;
+    margin-top: 2%;
+}
+
+.contact_btn{
+    margin-top: 10%;
+}
