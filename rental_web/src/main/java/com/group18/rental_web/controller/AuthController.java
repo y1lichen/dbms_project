@@ -49,7 +49,7 @@ public class AuthController {
         }
         String encodedPassword = encoder.encode(request.getPassword());
         User user = new User(request.getEmail(), encodedPassword, request.getUsername(),
-                request.getGender(), request.getPhone());
+                request.getGender(), request.getPhone(), request.getIs_foreign());
         userRepo.save(user);
         return ResponseEntity.ok("User signup successfully.");
     }

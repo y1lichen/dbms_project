@@ -24,6 +24,8 @@ public class User {
 
     private String token;
 
+    private boolean isForeign;
+
     // 房東擁有的房子
     @OneToMany
     private Set<House> ownedHouse;
@@ -36,12 +38,13 @@ public class User {
     }
 
     public User(String email, String hashedPassword, String name, int gender,
-        String phone) {
+        String phone, boolean isForeign) {
         this.email = email;
         this.hashedPassword = hashedPassword;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
+        this.isForeign = isForeign;
     }
 
     public void setId(int id) {
@@ -106,5 +109,13 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public void setIsForeign(boolean isForeign) {
+        this.isForeign = isForeign;
+    }
+
+    public boolean getIsForeign() {
+        return isForeign;
     }
 }

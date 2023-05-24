@@ -13,12 +13,17 @@ public class SignUpRequest {
 
     private String phone;
 
-    public SignUpRequest(String username, String email, String password, int gender, String phone) {
+    private boolean is_foreign;
+
+    public SignUpRequest(String username, String email,
+                         String password, int gender,
+                         String phone, boolean is_foreign) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.phone = phone;
+        this.is_foreign = is_foreign;
     }
 
 
@@ -62,4 +67,11 @@ public class SignUpRequest {
         this.phone = phone;
     }
 
+    public boolean getIs_foreign() {
+        return is_foreign;
+    }
+
+    public void setIs_foreign(boolean is_foreign) {
+        this.is_foreign = is_foreign;
+    }
 }
