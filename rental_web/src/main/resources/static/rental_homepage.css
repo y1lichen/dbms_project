@@ -200,8 +200,16 @@ input::placeholder{
     color: rgb(78, 76, 76);
 }
 
-.icon {
-    padding: 2px 2px;
+.icon1 {
+    /* margin-right: 8px; */
+    padding: 1px 1px;
+    margin-right: 1%;
+    color:rgba(255, 255, 255, 0.873);
+}
+
+.icon2 {
+    padding: 1px 1px;
+    margin-right: 1%;
     color:rgba(255, 255, 255, 0.873);
 }
 
@@ -227,18 +235,25 @@ textarea:focus, input:focus{
     text-align:center;
 }
 
-#username, #password{
+#username{
     width: 240px;
     height: 45px;
     margin: 10px;
 }
 
+/* 不特別設定password的樣式才長一樣 */
+/* #password{
+    width: 240px;
+    height: 38px;
+    margin: 5px;
+} */
+
 .tab1{
-    padding: 3%;
+    padding: 6%;
 }
 
 .tab2{
-    padding: 2%;
+    padding: 5%;
 }
 
 .sign_up_background{
@@ -283,6 +298,13 @@ textarea:focus, input:focus{
 
 nav .menu_btn{
     display: none;
+}
+
+.forgot_btn{
+    width: 130px;
+    height: 10px;
+    float:right;
+    font-size: 13px;
 }
 
 /*------------ intro-------------- */
