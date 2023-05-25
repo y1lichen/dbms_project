@@ -67,7 +67,7 @@ public class HouseController {
     public String createHouse(@Valid CreateHouseRequest request, HttpSession session) {
         String email = getEmailFromSession(session);
         if (email == null) {
-            return "retal_homepage";
+            return "rental_homepage";
         }
         Optional<User> optUser = userService.getUserByEmail(email);
         if (optUser.isEmpty()) {
