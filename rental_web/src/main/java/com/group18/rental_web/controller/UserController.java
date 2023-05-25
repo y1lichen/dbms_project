@@ -29,22 +29,25 @@ public class UserController {
 
     @GetMapping("/personal")
     public String getPersonalPage() {
-        return "persoanl_page";
+        return "personal_page";
     }
 
-//    @GetMapping("/create")
-//    public String getSignUpPage() {
-//    }
+    @GetMapping("/create")
+    public String getSignUpPage() {
+        return "register_page";
+    }
+
     @PostMapping("/create")
     public String createUser(@Valid SignUpRequest request) {
         if (userRepo.existsByEmail(request.getEmail())) {
             // 導回註冊頁
-            return "";
+            return "register_page";
         }
         User user = new User(request.getEmail(), encoder.encode(request.getPassword()),
             request.getUsername(), request.getGender(), request.getPhone(), request.getIs_foreign());
         userRepo.save(user);
-        return  "rental_homepage";
+        System.out.println("User " + user.getEmail() + " created.");
+        return "rental_homepage";
     }
 
     @GetMapping("/login")
