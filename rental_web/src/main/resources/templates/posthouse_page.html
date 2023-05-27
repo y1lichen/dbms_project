@@ -31,9 +31,8 @@
     <!-- 文字動畫 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
-
-
 </head>
+
 <body>
     <!-- nav -->
     <nav class="nav nav_fixtop" id="navbar">
@@ -44,6 +43,7 @@
             <li><a href="./search_page.html">Search</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Personal</a></li>
+
             <!--子安新增-->
             <li class="dropdown">
                 <a href="#">Others</a>
@@ -54,6 +54,7 @@
                 </div>
             </li>
             <!--子安新增end-->
+
           </ul>
         </div>
     </nav>
@@ -64,48 +65,60 @@
         <form method="post" th:action="@{/house/create}">
         <div class="container post_tab">
             <div class="row justify-content-center">
+                
                 <!-- post -->
                 <div class="post_background">
                 <h3 class="post_title">刊登資訊 Post Information</h3>
                 <div class="tab1"></div>
                     <div class="input_information">
                         <h4 class="little_title">基本資料 Basic Information</h4><br>
+                        
                         <!--刊登名稱-->
                         <div>
                             <i class="fa-solid fa-user fa-bounce icon"></i>
                             <input type="text" id="title" name="title" placeholder="刊登名 title" required>
                         </div>
+
                         <div class="tab2"></div>
                         <!--地址-->
                         <div >
                             <i class="fa-solid fa-key fa-bounce icon"></i>
                             <input type="text" id="address" name="address" placeholder="地址 address" required>
                         </div>
+
                         <div class="tab2"></div>
-<!--                        簡介-->
+                        <!--簡介-->
                         <div >
                             <i class="fa-solid fa-key fa-bounce icon"></i>
                             <input type="text" id="address" name="description" placeholder="簡介 description" required>
                         </div>
+
                         <div class="tab2"></div>
+
                         <!--月租-->
                         <div >
                             <i class="fa-solid fa-key fa-bounce icon"></i>
                             <input type="text" id="monthly_fee" name="monthly_fee" placeholder="月租 monthly_fee" required>
                         </div>
+
                         <div class="tab2"></div>
+
                         <!-- 租期 -->
                         <div >
                             <i class="fa-solid fa-key fa-bounce icon"></i>
                             <input type="text" id="monthly_fee" name="rent_term" placeholder="租期 rent_term" required>
                         </div>
+
                         <div class="tab2"></div>
+
                         <!--人數-->
                         <div >
                             <i class="fa-solid fa-key fa-bounce icon"></i>
                             <input type="text" id="number_of_people" name="capacity" placeholder="人數 number of people" required>
                         </div>
+
                         <div class="tab2"></div>
+
                         <!--性別-->
                         <h4 class="little_title">性別 Gender</h4><br>
                         <div>
@@ -116,6 +129,7 @@
                             <input type="radio" id="both" name="gender" value="2">
                             <label for="both" class="gender">皆可 both</label>
                         </div>
+
                         <div class="tab2"></div>
 <!--                        從人數就可以知道是不是雅房，先comment掉-->
 <!--房型-->
