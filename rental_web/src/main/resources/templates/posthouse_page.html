@@ -62,7 +62,7 @@
     <!-- nav -->
 
     <section class="post">
-        <form method="post" th:action="@{/house/create}">
+        <form method="post" th:action="@{/house/create}" enctype="multipart/form-data">
         <div class="container post_tab">
             <div class="row justify-content-center">
                 
@@ -161,7 +161,7 @@
                         <!--上傳單張-->
                         <!-- <input type="file" id="img" name="img" accept="image/*"> -->
                         <!--上傳多張-->
-                        <input type="file" name="imagefile" multiple="multiple" required="required" draggable="true" />
+                        <input type="file" name="imagefile" multiple="multiple" accept="image/*" required="required" draggable="true" />
                     </div>
                     <!--submit-->
                     <div class="tab2"></div>
