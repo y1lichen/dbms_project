@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rental Search</title>   
+    <title>Rental Search</title>
 
     <!-- 響應式網站 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -23,10 +23,10 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-    
+
 
     <!-- my rental_homepage.css -->
-    <link rel="stylesheet" href="../static/search_page.css">
+    <link rel="stylesheet" href="../static/search_page.css" th:href="@{/search_page.css}">
 
     <!-- 文字動畫 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
@@ -55,7 +55,7 @@
             </li>
             <!--子安新增end-->
           </ul>
-        </div> 
+        </div>
     </nav>
 
     <!-- nav -->
@@ -123,38 +123,36 @@
                 <!-- filter end -->
 
                 <!-- 正文 -->
-
-                <div class="col-md-4 col-sm-6">
-                    <!-- 1 -->
-                    <div class="card" >
+                <div th:if="${houses.empty}">
+                    <h1>No house available</h1>
+                </div>
+                <div class="col-md-4 col-sm-6" th:each="house: ${houses}">
+                    <div class="card">
                         <img src="./images/home.jpg" class="card-img-top card_pic" alt="...">
                         <div class="card-body">
-                        <!-- card-btns -->
                             <div class="card-btns">
-                                <button>
+<!--                                 <button>
                                     <i class="fas fa-heart"></i>
-                                </button>
+                                </button> -->
                                 <button>
                                     <i class="fa-solid fa-star"></i>
                                 </button>
-                                <button>
+  <!--                               <button>
                                     <i class="fab fa-facebook"></i>
                                 </button>
-                            </div>
-                        <!-- card-btns end -->
-                            <h5 class="card-title">近政治大學的景觀套房</h5>
-                            <p class="card-text">地址：台北市文山區指南路三段38巷<br>月租：8500元<br>房型：套房 / 樓層：1樓 </p>
+ -->                        </div>
+                            <h5 class="card-title" th:text="${house.title}">Title</h5>
+                            <p class="card-text" th:text="${house.address}">地址：台北市文山區指南路三段38巷<br>月租：8500元<br>房型：套房 / 樓層：1樓 </p>
                             <a href="./search_detail_page.html" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                            </div>
+                        </div>
                     </div>
-                    <!-- 1 end -->
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 2 -->
+
+
+<!--                 <div class="col-md-4 col-sm-6">
                     <div class="card">
                         <img src="./images/home2.jpg" class="card-img-top card_pic" alt="...">
                         <div class="card-body">
-                        <!-- card-btns -->
                             <div class="card-btns">
                                 <button>
                                     <i class="fas fa-heart"></i>
@@ -166,200 +164,12 @@
                                     <i class="fab fa-facebook"></i>
                                 </button>
                             </div>
-                        <!-- card-btns end -->
                           <h5 class="card-title"> 政大平面美妝套房</h5>
                           <p class="card-text">地址：台北市文山區指南路三段<br>月租：6500元<br>房型：雅房 / 樓層：1樓</p>
                           <a href="./search_detail_page.html" class="more_btn_style" style="text-decoration: none;">know more...</a>
                         </div>
                     </div>
-                    <!-- 2 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 3 -->
-                    <div class="card">
-                        <img src="./images/home4.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                        <!-- card-btns -->
-                            <div class="card-btns">
-                                <button>
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button>
-                                    <i class="fa-solid fa-star"></i>
-                                </button>
-                                <button>
-                                    <i class="fab fa-facebook"></i>
-                                </button>
-                            </div>
-                         <!-- card-btns end -->
-                          <h5 class="card-title">政大靜巷一樓大空間</h5>
-                          <p class="card-text">地址：台北市文山區指南路二段<br>月租：10500元<br>房型：套房 / 樓層：3樓</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 3 end -->
-                </div>
-    
-                <div class="col-md-4 col-sm-6">
-                    <!-- 4 -->
-                    <div class="card" >
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                        <!-- card-btns -->
-                            <div class="card-btns">
-                                <button>
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <button>
-                                    <i class="fa-solid fa-star"></i>
-                                </button>
-                                <button>
-                                    <i class="fab fa-facebook"></i>
-                                </button>
-                            </div>
-                        <!-- card-btns end -->
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 4 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 5 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 5 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 6 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 6 end -->
-                </div>
-    
-                <div class="col-md-4 col-sm-6">
-                    <!-- 7 -->
-                    <div class="card" >
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 7 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 8 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 8 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 9 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 9 end -->
-                </div>
-    
-                <div class="col-md-4 col-sm-6">
-                    <!-- 10  -->
-                    <div class="card" >
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 10  end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 11 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 11 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 12 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 12 end -->
-                </div>
-    
-                <div class="col-md-4 col-sm-6">
-                    <!-- 13 -->
-                    <div class="card" >
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 13 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!-- 14 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 14 end -->
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <!--15 -->
-                    <div class="card">
-                        <img src="./images/s2.jpg" class="card-img-top card_pic" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="more_btn_style" style="text-decoration: none;">know more...</a>
-                        </div>
-                    </div>
-                    <!-- 15 end -->
-                </div>
+                </div> -->
                 <!-- 正文end -->
 
                 <!-- demand post -->
@@ -398,7 +208,7 @@
 
                         <!-- 4 -->
                         <div class="pho">
-                            
+
                         </div>
                         <!-- 4 -->
 
@@ -415,24 +225,24 @@
 
                         <!-- 6 -->
                         <div class="pho">
-                            
+
                         </div>
                         <!-- 6 -->
 
                     </div>
                 </div>
                 <!-- demand post end -->
-               
+
             </div>
         </div>
     </section>
-    
-    
+
+
     <script>
         var nav_links = document.getElementById("nav_links");
         var mbtn = document.getElementById("mbtn");
         var navbar = document.getElementById("navbar");
-        
+
         function showMenu(){
             nav_links.style.right = "0";
             // 因為右邊導覽列微透明所以要隱藏三條線
