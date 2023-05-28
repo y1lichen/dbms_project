@@ -8,6 +8,11 @@
     padding: 0;
 }
 
+body{
+    background-color: #FDD692;
+
+}
+
 /*logo*/
 .logo{
     color: 	#f1d691;
@@ -115,137 +120,86 @@
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
 
-
-/* post */
-.post{
-    background-color: #FDD692;
-    position: relative;
-    z-index: 1;
-}
-
-.post_tab{
+.container_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 75%;
+    height: 550px;
     margin-top: 5%;
+    background: url(../static/images/home2.jpg)no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    
+
 }
 
-.post_title {
-    margin: 20px 0 10px;
-    padding-left: 20px;
-    font-size: 30px;
-    /* color: rgba(255, 255, 255, 0.979); */
-    /* text-shadow:6px 5px 2px rgba(0, 0, 0, 0.74); */
-    color: rgba(78, 75, 75, 0.903);
-    text-align: center;
-    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+.container_box .content{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    background-color:transparent;
+    padding: 80px;
+    color: #ffffff;
+    text-shadow: 1px 2px 3px black;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
 }
 
-.little_title{
-    font-size: 20px;
-    color: rgba(78, 75, 75, 0.903);
-    text-shadow: -1px -1px 0 rgb(236, 232, 232);
+.container_box .post_box{
+    position:absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 58%);
+    height: 100%;
 }
 
-input[type=text] {
-    padding: 5px 10px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid rgba(255, 251, 251, 0.734);
+.text_box h2{
+    font-size: 40px;
+    line-height: 1;
+}
+
+.text_box h2 span{
+    font-size: 25px;
+}
+
+.text_box p {
+    font-size: 16px;
+    margin: 20px 0;
 }
 
 input[type=text]:focus {
     background-color:rgb(243, 241, 239);
     border-radius: 15px;
+    padding-left: 2%;
 }
 
 input::placeholder{
-    padding-left: 5px;
+    padding-left: 2%;
     color: rgb(78, 76, 76);
-    font-size: 20px;
+    font-size: 15px;
 }
 
-.icon {
-    padding: 2px 2px;
-    color:rgba(255, 255, 255, 0.873);
-} 
 
-
-textarea:focus, input:focus{
-    outline: none;
-}
-
-.post_background{
-    margin: 10%;
-    padding-top: 5px;
-    width: 1000px;
-    height: 1250px;
-    background-color: rgba(228, 223, 223, 0.514);
-    border-radius: 5px;
-    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
-    
-    /*login區塊對齊*/
-    position:relative;
-    margin-left: 5%;
-    margin-right: 5%;
-    top: 20px;
-    /* text-align:center;  */
-}
-
-.input_information{
-    text-align:left; 
-    margin-left: 15%;
-}
-
-#postname, #address, #monthly_fee, #number_of_people{
-    width: 700px;
-    height: 50px;
-    margin: 10px;
-}
-
-.roomtype, .gender, .floor{
-    color: rgb(78, 76, 76);
-    font-size: 20px;
-    padding: 1%;
-}
-
-#room_to_share, #studio, #male, #female, #both, #first_floor, #second_floor, #third_floor, #fourth_floor, #above_fourth_floor{
-    width: 15px;
-    height: 15px;
-    margin: 10px;
-}
-
-input[type='radio']:after {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #d1d3d1;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
-
-input[type='radio']:checked:after {
-    width: 20px;
-    height: 20px;
-    border-radius: 15px;
-    top: -2px;
-    left: -1px;
-    position: relative;
-    background-color: #ffa500;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 2px solid white;
-}
-
-.tab1{
-    padding: 2%;
-}
-
-.tab2{
-    padding: 1%;
+.post_box .form_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #2b2a2a;
+    text-shadow: 1px 1px 2px white;
+    padding-left: 10%;
 }
 
 .submit_background{
@@ -256,79 +210,27 @@ input[type='radio']:checked:after {
     /* 行內區塊可以設寬高 */
     display: inline-block;
     text-decoration: none;
-    color: rgba(81, 78, 78, 0.979);
+    color: rgba(3, 3, 3, 0.979);
     border: 1px solid white;
-    margin-top: 10%;
-    padding: 10px 30px;
-    font-size: 16px;
+    margin-top: 2%;
+    margin-left: 50%;
+    padding: 10px 5px;
+    font-size: 12px;
     background: transparent;
     position: relative;
     cursor: pointer;
+    
     /*button長寬*/
-    width: 360px;
-    height: 45px;
+    width: 100px;
+    height: 35px;
 }
 
 .submit_btn:hover{
     text-decoration: none;
     border:none;
-    font-size: 18px;
-    font-weight: bolder;
     color: rgba(147, 0, 0, 0.796);
     background:rgb(237, 204, 144);
     border-radius: 10px;
     transition:0.5s;
 }
 
-/* .input-icons i {
-    position: absolute;
-    top: 108px;
-    left: 10px;
-    
-}*/
-
-
-nav .menu_btn{
-    display: none;
-}
-
-
-/* 553 */
-
-
-@media (max-width:700px) {
-    .logo{
-        font-size: 20px;
-    }
-
-
-    .nav_links ul{
-        padding: 30px;
-    }
-
-    .nav_links ul li a{
-       color: #ffffff;
-       text-shadow:2px 1px 1px rgba(0, 0, 0, 0.74);
-       transition: 0.5s; 
-    }
-
-    /* 取消底線色塊偽元素 */
-    .nav_links ul li::after{
-        display: none;
-    }
-
-    .nav_links ul li a:hover{
-        /* 等游標移上去再顯示 */
-        color: rgb(158, 55, 232);
-        font-size: 20px;
-        font-weight: 500;
-        text-shadow:2px 1px 1px rgba(227, 222, 222, 0.788); 
-    }
-
-    .filter{
-        margin-top: 40%;
-        height: 200px;
-        width:auto;
-    }
-    
-}

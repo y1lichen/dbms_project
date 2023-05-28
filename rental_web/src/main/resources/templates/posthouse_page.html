@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rental Post</title>
-
-    <!-- 響應式網站 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document try</title>
 
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- 響應式網站 -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-    <!-- 輪播元素套件 -->
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.css' />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-
-
-    <!-- my rental_homepage.css -->
-    <link rel="stylesheet" href="../static/posthouse_page.css" th:href="@{/posthouse_page.css}">
-
-    <!-- 文字動畫 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
+     <!-- font-awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+     <!-- boxicons -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <!-- bootstrap -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+ 
+     <!-- 輪播元素套件 -->
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.css' />
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css' />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+ 
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js'></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+ 
+ 
+     <!-- my rental_homepage.css -->
+     <link rel="stylesheet" href="../static/posthouse_page.css" th:href="@{/posthouse_page.css}">
+ 
+     <!-- 文字動畫 -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+ 
 </head>
-
 <body>
-    <!-- nav -->
     <nav class="nav nav_fixtop" id="navbar">
         <a href="#" class="logo"><i class="fa-solid fa-house">logo</i></a>
         <div class="nav_links" id="nav_links">
@@ -43,7 +44,6 @@
             <li><a href="./search_page.html">Search</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Personal</a></li>
-
             <!--子安新增-->
             <li class="dropdown">
                 <a href="#">Others</a>
@@ -54,126 +54,117 @@
                 </div>
             </li>
             <!--子安新增end-->
-
           </ul>
         </div>
     </nav>
 
-    <!-- nav -->
+    <div class="container_box">
+        <div class="content">
+            <div class="text_box">
+                <h2>Welcome to <br> post your needs!</h2>
+                <h2><span>歡迎刊登您的需求至租屋網頁</span></h2>
 
-    <section class="post">
-        <form method="post" th:action="@{/house/create}" enctype="multipart/form-data">
-        <div class="container post_tab">
-            <div class="row justify-content-center">
-                
-                <!-- post -->
-                <div class="post_background">
-                <h3 class="post_title">刊登資訊 Post Information</h3>
-                <div class="tab1"></div>
-                    <div class="input_information">
-                        <h4 class="little_title">基本資料 Basic Information</h4><br>
-                        
-                        <!--刊登名稱-->
-                        <div>
-                            <i class="fa-solid fa-user fa-bounce icon"></i>
-                            <input type="text" id="title" name="title" placeholder="刊登名 title" required>
-                        </div>
-
-                        <div class="tab2"></div>
-                        <!--地址-->
-                        <div >
-                            <i class="fa-solid fa-key fa-bounce icon"></i>
-                            <input type="text" id="address" name="address" placeholder="地址 address" required>
-                        </div>
-
-                        <div class="tab2"></div>
-                        <!--簡介-->
-                        <div >
-                            <i class="fa-solid fa-key fa-bounce icon"></i>
-                            <input type="text" id="address" name="description" placeholder="簡介 description" required>
-                        </div>
-
-                        <div class="tab2"></div>
-
-                        <!--月租-->
-                        <div >
-                            <i class="fa-solid fa-key fa-bounce icon"></i>
-                            <input type="text" id="monthly_fee" name="monthly_fee" placeholder="月租 monthly_fee" required>
-                        </div>
-
-                        <div class="tab2"></div>
-
-                        <!-- 租期 -->
-                        <div >
-                            <i class="fa-solid fa-key fa-bounce icon"></i>
-                            <input type="text" id="monthly_fee" name="rent_term" placeholder="租期 rent_term" required>
-                        </div>
-
-                        <div class="tab2"></div>
-
-                        <!--人數-->
-                        <div >
-                            <i class="fa-solid fa-key fa-bounce icon"></i>
-                            <input type="text" id="number_of_people" name="capacity" placeholder="人數 number of people" required>
-                        </div>
-
-                        <div class="tab2"></div>
-
-                        <!--性別-->
-                        <h4 class="little_title">性別 Gender</h4><br>
-                        <div>
-                            <input type="radio" id="male" name="gender" value="0">
-                            <label for="male" class="gender">男生 male</label>
-                            <input type="radio" id="female" name="gender" value="1">
-                            <label for="female" class="gender">女生 female</label>
-                            <input type="radio" id="both" name="gender" value="2">
-                            <label for="both" class="gender">皆可 both</label>
-                        </div>
-
-                        <div class="tab2"></div>
-<!--                        從人數就可以知道是不是雅房，先comment掉-->
-<!--房型-->
-<!--                        <h4 class="little_title">房型 Room type</h4><br>-->
-<!--                        <div>-->
-<!--                            <input type="radio" id="room_to_share" name="roomtype" value="雅房 room to share">-->
-<!--                            <label for="room_to_share" class="roomtype">雅房 room to share</label>-->
-<!--                            <input type="radio" id="studio" name="roomtype" value="套房 studio">-->
-<!--                            <label for="studio" class="roomtype">套房 studio</label>-->
-<!--                        </div>-->
-                        <div class="tab2"></div>
-                        <!--樓層-->
-                        <h4 class="little_title">樓層 Floor</h4><br>
-                        <div>
-                            <input type="radio" id="first_floor" name="floor" value="1">
-                            <label for="first_floor" class="floor">一樓 first floor</label>
-                            <input type="radio" id="second_floor" name="floor" value="2">
-                            <label for="second_floor" class="floor">二樓 second floor</label>
-                            <input type="radio" id="third_floor" name="floor" value="3">
-                            <label for="third_floor" class="floor">三樓 third floor</label><br>
-                            <input type="radio" id="fourth_floor" name="floor" value="4">
-                            <label for="fourth_floor" class="floor">四樓 fourth floor</label>
-                            <input type="radio" id="above_fourth_floor" name="floor" value="5">
-                            <label for="above_fourth_floor" class="floor">四樓以上 above fourth floor</label>
-                        </div>
-                        <div class="tab2"></div>
-                        <!--照片-->
-                        <h4 class="little_title">房屋照片 Photographs</h4><br>
-                        <!--上傳單張-->
-                        <!-- <input type="file" id="img" name="img" accept="image/*"> -->
-                        <!--上傳多張-->
-                        <input type="file" name="imagefile" multiple="multiple" accept="image/*" required="required" draggable="true" />
-                    </div>
-                    <!--submit-->
-                    <div class="tab2"></div>
-                    <div class = "submit_background">
-                        <input type="submit" value="Submit" class="submit_btn">
-                    </div>
-                </div>
-                <!-- post end -->
+                <p>提供您客製化找尋房子與室友的機會</p>
             </div>
+            
         </div>
-        </form>
-    </section>
 
+        <div class="post_box">
+                <div class="form_box">
+                    <form action="">
+                        <h3>Post 刊登資訊</h3>
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bx-file-blank'></i></span>
+                            <label for="">標題</label>
+                            <input type="text" id="title" name="title" placeholder="title" required>    
+                        </div>
+    
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bx-map'></i></span>
+                            <label for="">地址</label>
+                            <input type="text" id="address" name="address" placeholder="address" required>
+                            
+                        </div>
+    
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bxs-message-dots'></i></span>
+                            <label for="">簡介</label>
+                            <input type="text" id="description" name="description" placeholder="description" required>
+                        </div>
+    
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bx-money-withdraw'></i></span>
+                            <label for="">月租</label>
+                            <input type="text" id="monthly_fee" name="monthly_fee" placeholder="monthly_fee" required>
+                        </div>
+    
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bxs-time-five'></i></span>
+                            <label for="">租期</label>
+                            <input type="text" id="rent_term" name="rent_term" placeholder="rent_term" required>
+                        </div>
+    
+                        <div class="input_box">
+                            <span class="icon"><i class='bx bxs-user-plus'></i></span>
+                            <label for="">人數</label>
+                            <input type="text" id="number_of_people" name="number_of_people" placeholder="number of people" required>
+                        </div>
+
+                        <div class="radio_box">
+                            <!--性別-->
+                            <span class="icon"><i class='bx bx-male-female'></i></span>
+                            <label for="">性別 gender</label>
+                            <div>
+                                <input type="radio" id="male" name="gender" value="0">
+                                <label for="male" class="gender">男生 male</label>
+                                <input type="radio" id="female" name="gender" value="1">
+                                <label for="female" class="gender">女生 female</label>
+                                <input type="radio" id="both" name="gender" value="2">
+                                <label for="both" class="gender">皆可 both</label>
+                            </div>
+                            
+                            <!--樓層-->
+                            <span class="icon"><i class='bx bx-building-house'></i></span>
+                            <label for="">樓層 Floor</label>
+                            
+                            <div>
+                                <input type="radio" id="first_floor" name="floor" value="1">
+                                <label for="first_floor" class="floor">一樓 first floor</label>
+                                <input type="radio" id="second_floor" name="floor" value="2">
+                                <label for="second_floor" class="floor">二樓 second floor</label>
+                                <input type="radio" id="third_floor" name="floor" value="3">
+                                <label for="third_floor" class="floor">三樓 third floor</label><br>
+                                <input type="radio" id="fourth_floor" name="floor" value="4">
+                                <label for="fourth_floor" class="floor">四樓 fourth floor</label>
+                                <input type="radio" id="above_fourth_floor" name="floor" value="5">
+                                <label for="above_fourth_floor" class="floor">四樓以上 above fourth floor</label>
+                            </div>
+       
+                            <!--照片-->
+                            <span class="icon"><i class='bx bx-photo-album' ></i></span> 
+                            <label for="">房屋照片 Photographs</label>
+                            <!--上傳單張-->
+                            <!-- <input type="file" id="img" name="img" accept="image/*"> -->
+                            <!--上傳多張-->
+                            <input type="file" name="imagefile" multiple="multiple" accept="image/*" required="required" draggable="true" />
+                           <!--submit-->     
+                           <div class = "submit_background">
+                               <input type="submit" value="Submit" class="submit_btn">
+                           </div>
+       
+                    </form>
+       
+                   </div>
+    
+    
+                </div>            
+    
+
+
+
+        </div>
+
+    </div>
+    
 </body>
 </html>
