@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,16 +41,21 @@ public class HouseController {
     }
 
     @GetMapping("")
-    public ResponseEntity<?> getHouseDetail(@RequestParam(name="id", required = false) Optional<Integer> optId) {
+    public String getHouseDetail(@RequestParam(name="id", required = false) Optional<Integer> optId, Model model) {
         if (optId.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
+//            return ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
+            model.addAttribute("houses", houseService.getAllHouses());
+            System.out.println("There are " + houseService.getAllHouses().size() + " houses");
+            return "search_page";
         }
         int id = optId.get();
         Optional<House> optHouse = houseService.getHouseById(id);
         if (optHouse.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("house %d not found", id));
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("house %d not found", id));
+            return "House not found.";
         }
-        return ResponseEntity.status(HttpStatus.OK).body(optHouse.get());
+        return "house";
+//        return ResponseEntity.status(HttpStatus.OK).body(optHouse.get());
     }
 
     @GetMapping("/create")
