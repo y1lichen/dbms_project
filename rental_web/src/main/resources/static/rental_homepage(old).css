@@ -82,7 +82,7 @@
 }
 
 /* 底線色塊偽元素 */
-.nav_links ul li a::after{
+.nav_links ul li::after{
     content: "";
     /* 先設為寬度0未顯示 */
     width: 0%;
@@ -93,199 +93,9 @@
     transition: 0.5s;
 }
 
-.nav_links ul li a:hover::after{
+.nav_links ul li:hover::after{
     /* 等游標移上去再顯示 */
     width: 100%;
-}
-/*刪掉了*/
-/* .nav_links .btnLogin{
-    width: 130px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid white;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: #fff;
-    font-weight: 500;
-    transition: .5s;
-    margin-left: 20px;
-} */
-
-.wrapper{
-    position: relative;
-    margin: 10%;
-    padding-top: 5px;
-    width: 400px;
-    height: 500px;
-    background-color: rgba(228, 223, 223, 0.514);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: height .2s ease;
-    overflow: hidden;
-}
-
-
-.wrapper .form_box{
-    width: 100%;
-    padding: 40px;
-}
-
-.wrapper.active{
-    height: 550px;
-}
-
-.wrapper .form_box.login{
-    transition: transform .18s ease;
-    transform: translateX(0);
-
-}
-
-.wrapper.active .form_box.login{
-    transition: none;
-    transform: translateX(-400px);
-}
-
-.wrapper .form_box.register{
-    position: absolute;
-    transition: none;
-    transform: translateX(400px);
-}
-
-
-.wrapper.active .form_box.register{
-    transition: transform .18s ease;
-    transform: translateX(0);
-}
-
-/* .wrapper .form_box.login{
-    display: none;
-} */
-
-.form_box h2{
-    font-size: 2em;
-    color: #162938;
-    text-align: center;
-}
-
-.input_box{
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom:2px solid #162938 ;
-    margin: 25px 0;
-}
-
-.input_box label{
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #162938;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s;
-
-}
-
-.input_box input:focus~label,
-.input_box input:valid~label{
-    top: -5px;
-}
-
-
-.input_box input{
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color:#162938 ;
-    font-weight: 600;
-    padding: 0 35px 0 5px;
-}
-
-.input_box .icon{
-    position: absolute;
-    right: 8px;
-    font: size 1.2em;
-    color: #162938;
-    line-height: 57px;
-}
-
-.login_btn{
-    width: 100%;
-    height: 45px;
-    background-color: #162938;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-}
-
-.to_register_btn{
-    font-size: 0.9em;
-    text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px;
-}
-
-.to_register_btn a{
-    color: #162938;
-}
-
-.login_btn{
-    width: 100%;
-    height: 45px;
-    background-color: #162938;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-}
-
-.to_login_btn{
-    font-size: 0.9em;
-    text-align: center;
-    font-weight: 500;
-    margin: 10px 0 10px;
-}
-
-.to_login_btn a{
-    color: #162938;
-}
-
-.submit_btn{
-    width: 100%;
-    height: 30px;
-    background-color: #162938;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8em;
-    color: #fff;
-    font-weight: 500;
-}
-
-.nav_links .btnLogin:hover{
-    background:#fff;
-    color: #162938;
-    font-size: 1.2em;
-    color: #162938;
 }
 
 .header_title{
@@ -341,7 +151,7 @@
     padding: .9em .4em;
     position: absolute;
     left: 50%;
-    width: 32%;
+    width: 30%;
     top: 50%;
     display: block;
     border: 15px solid #f8c52cbe;
@@ -373,7 +183,7 @@
 }
 
 
-/*input[type=text] {
+input[type=text] {
     padding: 5px 10px;
     background: transparent;
     border: none;
@@ -388,9 +198,10 @@ input[type=text]:focus {
 input::placeholder{
     padding-left: 5px;
     color: rgb(78, 76, 76);
-}*/
+}
 
-/*.icon1 {
+.icon1 {
+    /* margin-right: 8px; */
     padding: 1px 1px;
     margin-right: 1%;
     color:rgba(255, 255, 255, 0.873);
@@ -405,10 +216,8 @@ input::placeholder{
 
 textarea:focus, input:focus{
     outline: none;
-}*/
+}
 
-
-/*
 .login_background{
     margin: 10%;
     padding-top: 5px;
@@ -418,22 +227,19 @@ textarea:focus, input:focus{
     border-radius: 5px;
     box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
 
-
+    /*login區塊對齊*/
     position:relative;
-
+    /* margin-left: 72%; */
     margin-right: 72%;
     top: 20px;
     text-align:center;
 }
-*/
 
-
-
-/*#username{
+#username{
     width: 240px;
     height: 45px;
     margin: 10px;
-}*/
+}
 
 /* 不特別設定password的樣式才長一樣 */
 /* #password{
@@ -442,7 +248,7 @@ textarea:focus, input:focus{
     margin: 5px;
 } */
 
-/*.tab1{
+.tab1{
     padding: 5%;
 }
 
@@ -452,11 +258,10 @@ textarea:focus, input:focus{
 
 .sign_up_background{
     text-align: center;
-}*/
+}
 
-/*
 .sign_up_btn{
-
+    /* 行內區塊可以設寬高 */
     display: inline-block;
     text-decoration: none;
     color: rgba(81, 78, 78, 0.979);
@@ -467,7 +272,7 @@ textarea:focus, input:focus{
     background: transparent;
     position: relative;
     cursor: pointer;
-
+    /*button長寬*/
     width: 280px;
     height: 45px;
 }
@@ -483,7 +288,6 @@ textarea:focus, input:focus{
     transition:0.5s;
 }
 
-*/
 /* .input-icons i {
     position: absolute;
     top: 108px;
@@ -496,14 +300,14 @@ nav .menu_btn{
     display: none;
 }
 
-/* .register_btn{
+.register_btn{
     margin-top: 3%;
     font-size: 13px;
 }
 
 .register_btn a{
     color: #2e2e31;
-} */
+}
 
 /*------------ intro-------------- */
 
