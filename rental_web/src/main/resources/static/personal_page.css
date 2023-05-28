@@ -119,3 +119,38 @@ body{
   
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+.container{
+    margin-top: 10%;
+}
+
+.photo li{
+    display: inline-block;
+    width: 160px;
+}
+
+​.photo li div{
+    width: 150px;
+    padding: 5px;
+    background: #ececec;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.photo li img{
+    width: 150px;
+    background-image: url();
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.tab{
+    padding-top: 30%;
+}
