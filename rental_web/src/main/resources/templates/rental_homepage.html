@@ -55,15 +55,15 @@
         <div class="form_box login">
           <!-- 登入部分 -->
           <h2>Login</h2>
-          <form action="">
+          <form method="post" action="#" th:action="@{/users/signin}">
             <div class="input_box">
               <span class="icon"><i class="fa-solid fa-envelope fa-bounce"></i></span>
-              <input type="email" required>
+              <input type="email" name="email" required>
               <label for="">Email</label>
             </div>
             <div class="input_box">
               <span class="icon"><i class="fa-solid fa-key fa-bounce"></i></span>
-              <input type="password" required>
+              <input type="password" name="password" required>
               <label for="">Password</label>
             </div>
 
