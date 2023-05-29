@@ -61,14 +61,15 @@ public class UserController {
         session.setAttribute("email", "");
         Optional<User> optUser = userRepo.findByEmail(request.getEmail());
         if (optUser.isEmpty()) {
-            return "User not found.";
+            return "retal_homepage";
         }
         User user = optUser.get();
         if (encoder.matches(request.getPassword(), user.getHashedPassword())) {
+            System.out.println("login!!!");
             session.setAttribute("email", user.getEmail());
             return "personal_page";
         }
-        return "Unable to signin";
+        return "rental_homepage";
     }
 
 }

@@ -11,7 +11,7 @@ public class House {
     }
 
     public House(String title, String address, int capacity, String description,
-                 User owner, int rentPerMonth, int rentTerm, int gender) {
+                 User owner, int rentPerMonth, int rentTerm, int gender, int prePaidTerm, double size, boolean isSuite) {
         this.title = title;
         this.address = address;
         this.capacity = capacity;
@@ -19,6 +19,10 @@ public class House {
         this.owner = owner;
         this.rentPerMonth = rentPerMonth;
         this.rentTerm = rentTerm;
+        this.gender = gender;
+        this.prePaidTerm = prePaidTerm;
+        this.size = size;
+        this.isSuite = isSuite;
     }
 
     @Id
@@ -32,6 +36,12 @@ public class House {
     private int capacity;
 
     private String description;
+
+    // 坪數
+    private double size;
+
+    // 是不是套房
+    private boolean isSuite;
 
     // 0-> male, 1->female, 2->both
     private int gender;
@@ -118,9 +128,32 @@ public class House {
 
     private int floor;
 
+    private int prePaidTerm;
+
     // 房內的租客
     @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
     private Set<User> residents;
 
+    public void setSize(double size) {
+        this.size = size;
+    }
 
+    public double getSize() {
+        return size;
+    }
+
+    public void setIsSuite(boolean isSuite) {
+        this.isSuite = isSuite;
+    }
+    public boolean getIsSuite() {
+        return isSuite;
+    }
+
+    public int getPrePaidTerm() {
+        return prePaidTerm;
+    }
+
+    public void setPrePaidTerm(int prePaidTerm) {
+        this.prePaidTerm = prePaidTerm;
+    }
 }

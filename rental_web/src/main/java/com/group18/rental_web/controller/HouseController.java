@@ -66,7 +66,7 @@ public class HouseController {
     }
 
     @PostMapping("/create")
-    public String createHouse(@Valid CreateHouseRequest request, HttpSession session) {
+    public String createHouse(@Valid CreateHouseRequest request, HttpSession session, Model model) {
         String email = getEmailFromSession(session);
         if (email == null) {
             return "rental_homepage";
@@ -78,9 +78,11 @@ public class HouseController {
         House house = new House(request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(),
                 optUser.get(), request.getMonthly_fee(),
-                request.getRent_term(), request.getGender());
+                request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(), request.getIs_suite());
         houseService.saveHouse(house);
         System.out.println("house post created.");
+        //
+        model.addAttribute("houses", houseService.getAllHouses());
         return "search_page";
     }
 

@@ -9,9 +9,36 @@ public class CreateHouseRequest {
     private int gender;
     private int rent_term;
     private int floor;
+    private int prepaid_term;
+    private double size;
+    private boolean is_suite;
     // 用owner email綁定owner
     // 不用email了，從sesssion拿
     // private String ownerEmail;
+
+
+    public int getPrepaid_term() {
+        return prepaid_term;
+    }
+
+    public void setPrepaid_term(int prepaid_term) {
+        this.prepaid_term = prepaid_term;
+    }
+
+    public void setIs_suite(boolean is_suite) {
+        this.is_suite = is_suite;
+    }
+    public boolean getIs_suite() {
+        return is_suite;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public double getSize() {
+        return size;
+    }
 
     public String getTitle() {
         return title;
