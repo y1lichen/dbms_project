@@ -11,7 +11,7 @@
 
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -40,7 +40,7 @@
                 </div>
             </li>
           </ul>
-        </div> 
+        </div>
     </nav>
 
     <!-- nav end -->
@@ -74,21 +74,23 @@
                     </div>
                     <div class="col-md-5 detail">
                       <!-- 這邊要放值 -->
-                        <h2>近政治大學的景觀套房</h2>
-                        <h2>月租：8500元</h2>
+                        <h2 th:text="${house.title}">近政治大學的景觀套房</h2>
+                        <h2 th:text="'月租：'+${house.rentPerMonth}">月租：8500元</h2>
                         <br>
-                        <h4>地址：台北市文山區指南路三段38巷</h4>
-                        <h4>房型：套房 </h4>
-                        <h4>樓層：1樓</h4>
-                        <h4>坪數：24.81坪</h4>
-                        <h4>押金：一個月</h4>
+                        <h4 th:text="'地址：'+${house.address}">地址：台北市文山區指南路三段38巷</h4>
+                        <h4 th:if="${house.isSuite} == true">房型：套房 </h4>
+                        <h4 th:if="${house.isSuite} == false">房型：雅房 </h4>
+                        <h4 th:text="'樓層：'+${house.floor}">樓層：1樓</h4>
+                        <h4 th:text="'坪數：'+${house.size}+'坪'">坪數：24.81坪</h4>
+                        <h4 th:text="'押金：'+${house.prePaidTerm}+'個月'">押金：一個月</h4>
+                        <h4 th:text="'房東電話：'+${house.owner.phone}">phone</h4>
                     </div>
                     <div class="line col-md-12">
-                      <p>其他條件：</p>
-                      <p>管理費 無 / 車位 無車位 /  型態 透天厝 / 性別要求 -- / 身分要求 -- / 
-                        格局 1房--廳1衛 / 可遷入日 隨時可遷入 / 開伙 -- / 養寵物 -- </p>
+  <!--                     <p>其他條件：</p>
+                      <p>管理費 無 / 車位 無車位 /  型態 透天厝 / 性別要求 -- / 身分要求 -- /
+                        格局 1房--廳1衛 / 可遷入日 隨時可遷入 / 開伙 -- / 養寵物 -- </p> -->
                         <p>房東的話：</p>
-                        <P>巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</P>
+                        <P th:text="${house.description}">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</P>
                     </div>
                     <div class="contact_btn">
                       <button type="button" class="btn btn-secondary">回搜尋頁主頁</button>
@@ -97,10 +99,10 @@
             </div>
           </div>
         </div>
-        
+
 
     </section>
 
-    
+
 </body>
 </html>
