@@ -44,6 +44,14 @@ public class House {
     // unit: month
     private int rentTerm;
 
+    public int getId() {
+        return id;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
     public String getTitle() {
         return title;
     }

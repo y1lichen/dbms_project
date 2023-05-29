@@ -6,15 +6,12 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
@@ -40,22 +37,21 @@ public class HouseController {
         return null;
     }
 
-    @GetMapping("")
-    public String getHouseDetail(@RequestParam(name="id", required = false) Optional<Integer> optId, Model model) {
-        if (optId.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
-            model.addAttribute("houses", houseService.getAllHouses());
-            System.out.println("There are " + houseService.getAllHouses().size() + " houses");
-            return "search_page";
-        }
-        int id = optId.get();
+    @GetMapping("{id}")
+    public String getHouseDetail(@PathVariable int id, Model model) {
         Optional<House> optHouse = houseService.getHouseById(id);
         if (optHouse.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("house %d not found", id));
-            return "House not found.";
+            return "House not found";
         }
-        return "house";
-//        return ResponseEntity.status(HttpStatus.OK).body(optHouse.get());
+        model.addAttribute("house", optHouse.get());
+        return "search_detail_page";
+    }
+    @GetMapping("")
+    public String getHouses(Model model) {
+//            return ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
+        model.addAttribute("houses", houseService.getAllHouses());
+        System.out.println("There are " + houseService.getAllHouses().size() + " houses");
+        return "search_page";
     }
 
     @GetMapping("/create")
