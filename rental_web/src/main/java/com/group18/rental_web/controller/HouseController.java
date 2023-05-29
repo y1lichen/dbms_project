@@ -77,6 +77,7 @@ public class HouseController {
         }
         House house = new House(request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(),
+                request.getFloor(),
                 optUser.get(), request.getMonthly_fee(),
                 request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(), request.getIs_suite());
         houseService.saveHouse(house);

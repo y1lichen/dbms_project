@@ -10,12 +10,13 @@ public class House {
     public House() {
     }
 
-    public House(String title, String address, int capacity, String description,
+    public House(String title, String address, int capacity, String description, int floor,
                  User owner, int rentPerMonth, int rentTerm, int gender, int prePaidTerm, double size, boolean isSuite) {
         this.title = title;
         this.address = address;
         this.capacity = capacity;
         this.description = description;
+        this.floor = floor;
         this.owner = owner;
         this.rentPerMonth = rentPerMonth;
         this.rentTerm = rentTerm;
