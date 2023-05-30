@@ -26,6 +26,7 @@ public class UserController {
 
     private Encoder encoder = new Encoder();
 
+    //改用session登入，就用不到這個了
 //    private JwtUtils jwtUtils = new JwtUtils();
 
     @GetMapping("/personal")
