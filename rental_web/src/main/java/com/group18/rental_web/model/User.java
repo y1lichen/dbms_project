@@ -30,6 +30,8 @@ public class User {
     @OneToMany
     private Set<House> ownedHouse;
 
+    private boolean isSuper;
+
     @ManyToMany
     private Set<House> resideHouses;
 
@@ -44,6 +46,7 @@ public class User {
         this.name = name;
         this.gender = gender;
         this.phone = phone;
+        this.isSuper = false;
         this.isForeign = isForeign;
     }
 
@@ -117,5 +120,13 @@ public class User {
 
     public boolean getIsForeign() {
         return isForeign;
+    }
+
+    public boolean isSuper() {
+        return isSuper;
+    }
+
+    public void setSuper(boolean aSuper) {
+        isSuper = aSuper;
     }
 }
