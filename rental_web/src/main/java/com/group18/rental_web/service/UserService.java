@@ -29,6 +29,15 @@ public class UserService {
 		repo.delete(user);
 	}
 
+    public Optional<User> findByEmail(String email) {
+        return repo.findByEmail(email);
+    }
+
+    public boolean existsByEmail(String email) {
+        return repo.existsByEmail(email);
+    }
+
+
     public String checkIsLogin(String path, HttpSession session)  {
         String email = (String) session.getAttribute("email");
         if (email == null || email.equals("")) {
