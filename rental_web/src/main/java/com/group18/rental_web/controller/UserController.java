@@ -70,4 +70,10 @@ public class UserController {
         return "rental_homepage";
     }
 
+    @PostMapping("/logout")
+    public String signOut(HttpSession session) {
+        session.setAttribute("email", "");
+        return "rental_homepage";
+    }
+
 }
