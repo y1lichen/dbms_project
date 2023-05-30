@@ -40,11 +40,14 @@ public class UserService {
         return repo.existsByEmail(email);
     }
 
-    public boolean validate(String email, String password) {
+    public String validate(String email, String password) {
         Optional<User> optUser = findByEmail(email);
-        if (optUser.isEmpty()) return false;
+        if (optUser.isEmpty()) return null;
         User user = optUser.get();
-        return encoder.matches(password, user.getHashedPassword());
+        if (encoder.matches(password, user.getHashedPassword())) {
+            return user.getEmail();
+        }
+        return null;
     }
 
 
