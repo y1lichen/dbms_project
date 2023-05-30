@@ -2,6 +2,7 @@ package com.group18.rental_web.service;
 
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.repository.UserRepo;
+import com.group18.rental_web.utils.Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,8 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
+    private Encoder encoder = new Encoder();
     @Autowired
     private UserRepo repo;
 
@@ -35,6 +38,13 @@ public class UserService {
 
     public boolean existsByEmail(String email) {
         return repo.existsByEmail(email);
+    }
+
+    public boolean validate(String email, String password) {
+        Optional<User> optUser = findByEmail(email);
+        if (optUser.isEmpty()) return false;
+        User user = optUser.get();
+        return encoder.matches(password, user.getHashedPassword());
     }
 
 

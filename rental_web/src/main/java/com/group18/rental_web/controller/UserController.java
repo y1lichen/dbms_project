@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private Encoder encoder = new Encoder();
+//    private Encoder encoder = new Encoder();
 
     //改用session登入，就用不到這個了
 //    private JwtUtils jwtUtils = new JwtUtils();
@@ -62,11 +62,7 @@ public class UserController {
     public String authenticateUser(@Valid LoginRequest request, HttpSession session) {
         session.setAttribute("email", "");
         Optional<User> optUser = userService.findByEmail(request.getEmail());
-        if (optUser.isEmpty()) {
-            return "retal_homepage";
-        }
-        User user = optUser.get();
-        if (encoder.matches(request.getPassword(), user.getHashedPassword())) {
+        if (userService.validate(request.getEmail(), request.getPassword())) {
             System.out.println("login!!!");
             session.setAttribute("email", user.getEmail());
             return "personal_page";
