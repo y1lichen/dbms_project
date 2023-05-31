@@ -1,6 +1,5 @@
 package com.group18.rental_web.controller;
 
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;

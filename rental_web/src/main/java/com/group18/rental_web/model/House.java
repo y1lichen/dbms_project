@@ -55,6 +55,10 @@ public class House {
     // unit: month
     private int rentTerm;
 
+    private int floor;
+
+    private int prePaidTerm;
+
     public int getId() {
         return id;
     }
@@ -127,13 +131,10 @@ public class House {
         this.floor = floor;
     }
 
-    private int floor;
-
-    private int prePaidTerm;
 
     // 房內的租客
-    @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
-    private Set<User> residents;
+//    @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
+//    private Set<User> residents;
 
     public void setSize(double size) {
         this.size = size;

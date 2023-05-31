@@ -26,14 +26,19 @@ public class User {
 
     private boolean isForeign;
 
+    private String nation;
+
+    private String selfDescription;
+
     // 房東擁有的房子
     @OneToMany
     private Set<House> ownedHouse;
 
     private boolean isSuper;
 
-    @ManyToMany
-    private Set<House> resideHouses;
+    // 收藏
+    @OneToMany
+    private Set<House> likedHouses;
 
     //constructor
     public User() {
@@ -48,6 +53,30 @@ public class User {
         this.phone = phone;
         this.isSuper = false;
         this.isForeign = isForeign;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setSelfDescription(String selfDescription) {
+        this.selfDescription = selfDescription;
+    }
+
+    public String getSelfDescription() {
+        return selfDescription;
+    }
+
+    public void setLikedHouses(Set<House> likedHouses) {
+        this.likedHouses = likedHouses;
+    }
+
+    public Set<House> getLikedHouses() {
+        return likedHouses;
     }
 
     public void setId(int id) {
