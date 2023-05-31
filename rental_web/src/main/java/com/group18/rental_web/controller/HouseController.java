@@ -1,12 +1,13 @@
 package com.group18.rental_web.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.group18.rental_web.payload.request.SelectorRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -95,5 +96,14 @@ public class HouseController {
         }
         houseService.deleteHouse(id);
         return ResponseEntity.status(HttpStatus.OK).body("successfully delete house");
+    }
+
+    @PostMapping("/selector")
+    public String getHousesBySelector(@Valid SelectorRequest request, Model model) {
+        List<House> houses = houseService.getHousesBySelector(request.getStartPricePerMonth(),
+                request.getEndPricePerMonth(), request.isSuite(), request.getFloor(), request.getStartSize(),
+                request.getEndSize());
+        model.addAttribute("houses", houses);
+        return "search_page";
     }
 }

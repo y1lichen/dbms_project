@@ -28,4 +28,10 @@ public class HouseService {
     public List<House> getAllHouses() {
         return houseRepo.findAll();
     }
+
+    public List<House> getHousesBySelector(int startPricePerMonth, int endPricePerMonth,
+                                           boolean isSuite, int floor, int startSize, int endSize) {
+        return houseRepo.findByPricePerMonthBetweenAndIsSuiteAndFloorAndSizeBetween(startPricePerMonth,
+                endPricePerMonth, isSuite, floor, startSize, endSize);
+    }
 }
