@@ -1,8 +1,12 @@
 package com.group18.rental_web.model;
 
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class House {
@@ -24,6 +28,7 @@ public class House {
         this.prePaidTerm = prePaidTerm;
         this.size = size;
         this.isSuite = isSuite;
+        this.clickTimes = 0;
     }
 
     @Id
@@ -58,6 +63,8 @@ public class House {
     private int floor;
 
     private int prePaidTerm;
+
+    private int clickTimes;
 
     public int getId() {
         return id;
@@ -157,5 +164,13 @@ public class House {
 
     public void setPrePaidTerm(int prePaidTerm) {
         this.prePaidTerm = prePaidTerm;
+    }
+
+    public int getClickTimes() {
+        return clickTimes;
+    }
+
+    public void setClickTimes(int clickTimes) {
+        this.clickTimes = clickTimes;
     }
 }
