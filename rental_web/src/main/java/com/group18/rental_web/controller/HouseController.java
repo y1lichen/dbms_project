@@ -68,11 +68,6 @@ public class HouseController {
 //        return "posthouse_page";
     }
 
-    @GetMapping("/search")
-    public String getSearchPage(HttpSession session) {
-        return userService.checkIsLogin("search_page", session);
-    }
-
     @PostMapping("/create")
     public String createHouse(@Valid CreateHouseRequest request, HttpSession session, Model model) {
         String email = getEmailFromSession(session);
@@ -97,7 +92,7 @@ public class HouseController {
 
     @DeleteMapping("")
     public ResponseEntity<String> deleteHouse(@RequestParam("id") int id) {
-        Optional<House> optHouse = houseService.getHouseById(id);
+        Optional<House> optHouse = houseService.getHouseDatailById(id);
         if (optHouse.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("house %d not found", id));
         }
@@ -107,9 +102,25 @@ public class HouseController {
 
     @PostMapping("/selector")
     public String getHousesBySelector(@Valid SelectorRequest request, Model model) {
-        List<House> houses = houseService.getHousesBySelector(request.getStartPricePerMonth(),
-                request.getEndPricePerMonth(), request.isSuite(), request.getFloor(), request.getStartSize(),
-                request.getEndSize());
+        int startBudget = 5000 + (5000*request.getBudget());
+        int endBudget = startBudget + 5000;
+        if (request.getBudget() == 2 || request.getBudget() == -1) {
+            endBudget = Integer.MAX_VALUE;
+        }
+        double startSize = 5.0*(request.getSize());
+        double endSize = startSize + 5;
+        if (request.getSize() == 3 || request.getSize() == -1) {
+            endSize = Double.MAX_VALUE;
+        }
+        int startFloor = request.getFloor();
+        int endFloor = startFloor;
+        if (request.getFloor() == -1) {
+            startFloor = 1;
+            endFloor = 5;
+        }
+        List<House> houses = houseService.getHousesBySelector(startBudget,
+            endBudget, request.getRoom_type() == 1, request.getGender(),
+                startFloor, endFloor, startSize, endSize);
         model.addAttribute("houses", houses);
         return "search_page";
     }

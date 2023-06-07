@@ -20,7 +20,7 @@ public class UserService {
         repo.save(user);
     }
 
-    public Optional<User> getUserById(String id) {
+    public Optional<User> getUserById(int id) {
         return repo.findById(id);
 	}
 

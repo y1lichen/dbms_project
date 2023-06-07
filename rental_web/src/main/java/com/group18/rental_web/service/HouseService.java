@@ -37,9 +37,12 @@ public class HouseService {
         return houseRepo.findAll();
     }
 
-    public List<House> getHousesBySelector(int startPricePerMonth, int endPricePerMonth,
-                                           boolean isSuite, int floor, int startSize, int endSize) {
-        return houseRepo.findByPricePerMonthBetweenAndIsSuiteAndFloorAndSizeBetween(startPricePerMonth,
-                endPricePerMonth, isSuite, floor, startSize, endSize);
+    public List<House> getHousesBySelector(int startRentPerMonth, int endRentPerMonth,
+                                           boolean isSuite, int gender, int startFloor, int endFloor, double startSize,
+                                           double endSize) {
+        System.out.printf("rent: %d-%d\nisSuite: %b\ngender: %d\nfloor: %d-%d\nsize: %f-%f\n",
+                startRentPerMonth, endRentPerMonth, isSuite, gender, startFloor, endFloor, startSize, endSize);
+        return houseRepo.findByRentPerMonthBetweenAndIsSuiteAndGenderAndFloorBetweenAndSizeBetween(startRentPerMonth,
+                endRentPerMonth, isSuite, gender, startFloor, endFloor, startSize, endSize);
     }
 }

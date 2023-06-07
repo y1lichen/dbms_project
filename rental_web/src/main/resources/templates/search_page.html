@@ -78,16 +78,17 @@
                                 <!-- 標題動畫  end -->
                             </div>
                             <div class="col-md-12 col-sm-12">
-                                <select class="filter_item">
-                                    <option>預算 Budget</option>
-                                    <option>5000-10000</option>
-                                    <option>$10000-20000</option>
-                                    <option>over $20000</option>
+                                <form method="post" action="#" th:action="@{/house/selector}">
+                                <select class="filter_item" name="budget">
+                                    <option value=-1 selected style="display:none">預算 Budget</option>
+                                    <option value=0>5000-10000</option>
+                                    <option value=1>$10000-15000</option>
+                                    <option value=2>over $15000</option>
                                 </select>
-                                <select class="filter_item">
-                                    <option>房型 Room type</option>
-                                    <option>雅房 room to share</option>
-                                    <option>套房 studio</option>
+                                <select class="filter_item" name="room_type">
+                                    <option value=-1 selected style="display:none">房型 Room type</option>
+                                    <option value=0>雅房 room to share</option>
+                                    <option value=1>套房 studio</option>
                                 </select>
 <!--                                <select class="filter_item">-->
 <!--                                    <option>地點 Location</option>-->
@@ -97,25 +98,32 @@
 <!--                                    <option>辛亥路</option>-->
 <!--                                    <option>先亂打的</option>-->
 <!--                                </select>-->
-                                <select class="filter_item">
-                                    <option>性別限制 Gender</option>
-                                    <option>限男生 male</option>
-                                    <option>限女生 female</option>
-                                    <option>不限</option>
+                                <select class="filter_item" name="gender">
+<!--                                    不選就是不限-->
+                                    <option value=2 selected style="display:none">性別限制 Gender</option>
+                                    <option value=0>限男生 male</option>
+                                    <option value=1>限女生 female</option>
+                                    <option value=2>不限</option>
                                 </select>
-                                <select class="filter_item">
-                                    <option>樓層限制 Floor</option>
-                                    <option>1樓 first floor</option>
-                                    <option>2樓 second floor</option>
-                                    <option>3樓 third floor</option>
-                                    <option>4樓 fourth floor</option>
-                                    <option>4樓以上 above fourth floor</option>
+                                <select class="filter_item" name="floor">
+                                    <option value=-1 selected style="display:none">樓層限制 Floor</option>
+                                    <option value=1>1樓 first floor</option>
+                                    <option value=2>2樓 second floor</option>
+                                    <option value=3>3樓 third floor</option>
+                                    <option value=4>4樓 fourth floor</option>
+                                    <option value=5>4樓以上 above fourth floor</option>
+                                </select>
+                                <select class="filter_item" name="size">
+                                    <option value=-1 selected style="display:none">樓層限制 Floor</option>
+                                    <option value=0>0-5坪</option>
+                                    <option value=1>5-10坪</option>
+                                    <option value=2>10-15坪</option>
+                                    <option value=3>15坪以上</option>
                                 </select>
                                 <!-- 搜尋按鈕 -->
-                                <a href="./rental_homepage.html">
-                                    <button class="btn btn_style"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-                                </a>
+                                    <button class="btn btn_style" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                                 <!-- 搜尋按鈕end -->
+                                </form>
                             </div>
                         </div>
                     </div>
