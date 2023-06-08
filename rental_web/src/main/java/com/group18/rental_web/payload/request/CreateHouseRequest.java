@@ -1,5 +1,9 @@
 package com.group18.rental_web.payload.request;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class CreateHouseRequest {
     private String title;
     private String address;
@@ -12,10 +16,18 @@ public class CreateHouseRequest {
     private int prepaid_term;
     private double size;
     private boolean is_suite;
+    private List<MultipartFile> images;
     // 用owner email綁定owner
     // 不用email了，從sesssion拿
     // private String ownerEmail;
 
+    public void setImages(List<MultipartFile> images) {
+        this.images = images;
+    }
+
+    public List<MultipartFile> getImages() {
+        return images;
+    }
 
     public int getPrepaid_term() {
         return prepaid_term;
@@ -28,6 +40,7 @@ public class CreateHouseRequest {
     public void setIs_suite(boolean is_suite) {
         this.is_suite = is_suite;
     }
+
     public boolean getIs_suite() {
         return is_suite;
     }
@@ -97,11 +110,11 @@ public class CreateHouseRequest {
     }
 
     // public String getOwnerEmail() {
-    //     return ownerEmail;
+    // return ownerEmail;
     // }
 
     // public void setOwnerEmail(String ownerEmail) {
-    //     this.ownerEmail = ownerEmail;
+    // this.ownerEmail = ownerEmail;
     // }
 
     public void setRent_term(int rent_term) {

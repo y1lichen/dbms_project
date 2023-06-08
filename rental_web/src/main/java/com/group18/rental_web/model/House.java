@@ -1,12 +1,9 @@
 package com.group18.rental_web.model;
 
+import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.*;
 
 @Entity
 public class House {
@@ -15,7 +12,7 @@ public class House {
     }
 
     public House(String title, String address, int capacity, String description, int floor,
-                 User owner, int rentPerMonth, int rentTerm, int gender, int prePaidTerm, double size, boolean isSuite) {
+            User owner, int rentPerMonth, int rentTerm, int gender, int prePaidTerm, double size, boolean isSuite) {
         this.title = title;
         this.address = address;
         this.capacity = capacity;
@@ -137,11 +134,20 @@ public class House {
     public void setFloor(int floor) {
         this.floor = floor;
     }
+    @OneToMany(orphanRemoval = true)
+    private Set<HouseImage> houseImages;
 
+    public void setHouseImages(Set<HouseImage> houseImages) {
+        this.houseImages = houseImages;
+    }
+
+    public Set<HouseImage> getHouseImages() {
+        return houseImages;
+    }
 
     // 房內的租客
-//    @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
-//    private Set<User> residents;
+    // @OneToMany(mappedBy = "resideHouses", cascade = CascadeType.ALL)
+    // private Set<User> residents;
 
     public void setSize(double size) {
         this.size = size;
@@ -154,6 +160,7 @@ public class House {
     public void setIsSuite(boolean isSuite) {
         this.isSuite = isSuite;
     }
+
     public boolean getIsSuite() {
         return isSuite;
     }
@@ -173,4 +180,5 @@ public class House {
     public void setClickTimes(int clickTimes) {
         this.clickTimes = clickTimes;
     }
+
 }

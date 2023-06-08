@@ -1,11 +1,12 @@
 package com.group18.rental_web.controller;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.group18.rental_web.model.HouseImage;
+import com.group18.rental_web.repository.HouseImageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ import com.group18.rental_web.payload.request.CreateHouseRequest;
 import com.group18.rental_web.payload.request.SelectorRequest;
 import com.group18.rental_web.service.HouseService;
 import com.group18.rental_web.service.UserService;
+import com.group18.rental_web.utils.ImageUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/house")
@@ -33,11 +36,13 @@ public class HouseController {
 
     @Autowired
     private HouseService houseService;
+    @Autowired
+    HouseImageRepo houseImageRepo;
 
     public String getEmailFromSession(HttpSession session) {
         try {
             return (String) session.getAttribute("email");
-        } catch(IllegalStateException e) {
+        } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
         }
         return null;
@@ -54,10 +59,12 @@ public class HouseController {
         model.addAttribute("house", optHouse.get());
         return "search_detail_page";
     }
+
     @GetMapping("")
     public String getHouses(Model model) {
-//            return ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
-        model.addAttribute("houses", houseService.getAllHouses());
+        // ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
+        List<House> houses = houseService.getAllHouses();
+        model.addAttribute("houses", houses);
         System.out.println("There are " + houseService.getAllHouses().size() + " houses");
         return "search_page";
     }
@@ -65,7 +72,7 @@ public class HouseController {
     @GetMapping("/create")
     public String getCreateHousePage(HttpSession session) {
         return userService.checkIsLogin("posthouse_page", session);
-//        return "posthouse_page";
+        // return "posthouse_page";
     }
 
     @PostMapping("/create")
@@ -82,12 +89,24 @@ public class HouseController {
                 request.getCapacity(), request.getDescription(),
                 request.getFloor(),
                 optUser.get(), request.getMonthly_fee(),
-                request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(), request.getIs_suite());
+                request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(),
+                request.getIs_suite());
+        houseService.saveHouse(house);
+        Set<HouseImage> imagesList = new HashSet<>();
+        for (MultipartFile file: request.getImages()) {
+            byte[] image = ImageUtils.covertToBytes(file);
+            System.out.println("image"+ image);
+//            HouseImage houseImage = new HouseImage(house, image);
+            HouseImage houseImage = new HouseImage(house, image);
+            HouseImage savedHouseImage =  houseImageRepo.save(houseImage);
+            imagesList.add(savedHouseImage);
+        }
+        house.setHouseImages(imagesList);
         houseService.saveHouse(house);
         System.out.println("house post created.");
         //
         model.addAttribute("houses", houseService.getAllHouses());
-        return "search_page";
+        return "redirect:/house";
     }
 
     @DeleteMapping("")
@@ -102,12 +121,12 @@ public class HouseController {
 
     @PostMapping("/selector")
     public String getHousesBySelector(@Valid SelectorRequest request, Model model) {
-        int startBudget = 5000 + (5000*request.getBudget());
+        int startBudget = 5000 + (5000 * request.getBudget());
         int endBudget = startBudget + 5000;
         if (request.getBudget() == 2 || request.getBudget() == -1) {
             endBudget = Integer.MAX_VALUE;
         }
-        double startSize = 5.0*(request.getSize());
+        double startSize = 5.0 * (request.getSize());
         double endSize = startSize + 5;
         if (request.getSize() == 3 || request.getSize() == -1) {
             endSize = Double.MAX_VALUE;
@@ -119,7 +138,7 @@ public class HouseController {
             endFloor = 5;
         }
         List<House> houses = houseService.getHousesBySelector(startBudget,
-            endBudget, request.getRoom_type() == 1, request.getGender(),
+                endBudget, request.getRoom_type() == 1, request.getGender(),
                 startFloor, endFloor, startSize, endSize);
         model.addAttribute("houses", houses);
         return "search_page";

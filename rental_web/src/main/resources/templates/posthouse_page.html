@@ -71,7 +71,7 @@
 
         <div class="post_box">
                 <div class="form_box">
-                    <form method="post" th:action="@{/house/create}">
+                    <form method="post" th:action="@{/house/create}" enctype="multipart/form-data">
                         <h3>Post Information 刊登資訊</h3>
                         <div class="input_box">
                             <span class="icon"><i class='bx bx-file-blank'></i></span>
@@ -164,7 +164,7 @@
                             <!--上傳單張-->
                             <!-- <input type="file" id="img" name="img" accept="image/*"> -->
                             <!--上傳多張-->
-<!--                            <input type="file" name="imagefile" multiple="multiple" accept="image/*" required="required" draggable="true" />-->
+                            <input type="file" name="images" multiple="multiple" accept="image/*" required="required" draggable="true" />
                            <!--submit-->
                            <div class = "submit_background">
                                <input type="submit" value="Submit" class="submit_btn">

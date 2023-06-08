@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6" th:each="house: ${houses}">
                     <div class="card">
-                        <img src="./images/home.jpg" class="card-img-top card_pic" alt="...">
+                        <img src="./images/home.jpg" class="card-img-top card_pic" alt="..." th:src="@{'data:image/jpeg;base64,'+${house.houseImages[0].getBase64()}}">
                         <div class="card-body">
                             <div class="card-btns">
 <!--                                 <button>
