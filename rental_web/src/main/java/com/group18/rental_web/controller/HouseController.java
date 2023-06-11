@@ -69,9 +69,23 @@ public class HouseController {
         return "search_page";
     }
 
+    // 編輯房屋
+    @GetMapping("/edit/{id}")
+    public String getEditPage(@PathVariable int id, Model model) {
+        Optional<House> optHouse = houseService.getHouseDatailById(id);
+        model.addAttribute("house", optHouse.get());
+        return userService.checkIsLoginAndRedirect("posthouse_page", session);
+    }
+    
+    @PostMapping("/edit/{id}")
+    public String editHouse(@PathVariable int id) {
+        return "redirect:/house";
+    }
+
+    // 新增房屋
     @GetMapping("/create")
     public String getCreateHousePage(HttpSession session) {
-        return userService.checkIsLogin("posthouse_page", session);
+        return userService.checkIsLoginAndRedirect("posthouse_page", session);
         // return "posthouse_page";
     }
 
@@ -79,11 +93,11 @@ public class HouseController {
     public String createHouse(@Valid CreateHouseRequest request, HttpSession session, Model model) {
         String email = getEmailFromSession(session);
         if (email == null) {
-            return "rental_homepage";
+            return "redirect:/user/login";
         }
         Optional<User> optUser = userService.getUserByEmail(email);
         if (optUser.isEmpty()) {
-            return "rental_homepage";
+            return "redirect:/user/login";
         }
         House house = new House(request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(),

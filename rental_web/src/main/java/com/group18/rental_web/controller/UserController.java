@@ -17,7 +17,7 @@ import com.group18.rental_web.payload.request.SignUpRequest;
 import com.group18.rental_web.utils.Encoder;
 
 @Controller
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
@@ -42,13 +42,13 @@ public class UserController {
     public String createUser(@Valid SignUpRequest request) {
         if (userService.existsByEmail(request.getEmail())) {
             // 導回註冊頁
-            return "register_page";
+            return "redirect:/user/create";
         }
         User user = new User(request.getEmail(), encoder.encode(request.getPassword()),
             request.getUsername(), request.getGender(), request.getPhone(), request.getIs_foreign());
         userService.saveUser(user);
         System.out.println("User " + user.getEmail() + " created.");
-        return "rental_homepage";
+        return "redirect:/user/login";
     }
 
     @GetMapping("/login")
@@ -64,15 +64,15 @@ public class UserController {
         if (email != null) {
             System.out.println("login!!!");
             session.setAttribute("email", email);
-            return "personal_page";
+            return "redirect:/personal";
         }
-        return "rental_homepage";
+        return "redirect:/login";
     }
 
     @PostMapping("/logout")
     public String signOut(HttpSession session) {
         session.setAttribute("email", "");
-        return "rental_homepage";
+        return "redirect:/login";
     }
 
 }

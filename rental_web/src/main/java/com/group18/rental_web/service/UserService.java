@@ -51,7 +51,7 @@ public class UserService {
     }
 
 
-    public String checkIsLogin(String path, HttpSession session)  {
+    public String checkIsLoginAndRedirect(String path, HttpSession session)  {
         String email = (String) session.getAttribute("email");
         if (email == null || email.equals("")) {
             // 沒有登入的話就導回登入頁
