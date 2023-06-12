@@ -63,6 +63,10 @@ public class House {
 
     private int clickTimes;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -134,6 +138,7 @@ public class House {
     public void setFloor(int floor) {
         this.floor = floor;
     }
+
     @OneToMany(orphanRemoval = true)
     private Set<HouseImage> houseImages;
 

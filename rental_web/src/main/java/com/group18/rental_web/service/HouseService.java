@@ -1,6 +1,5 @@
 package com.group18.rental_web.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.repository.HouseRepo;
-import com.group18.rental_web.utils.ImageUtils;
 
 @Service
 public class HouseService {

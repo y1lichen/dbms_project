@@ -71,14 +71,35 @@ public class HouseController {
 
     // 編輯房屋
     @GetMapping("/edit/{id}")
-    public String getEditPage(@PathVariable int id, Model model) {
+    public String getEditPage(@PathVariable int id, HttpSession session, Model model) {
         Optional<House> optHouse = houseService.getHouseDatailById(id);
+        // 找不到id就導回
+        if (optHouse.isEmpty()) {
+            return "redirect:/house";
+        }
+        model.addAttribute("id", id);
         model.addAttribute("house", optHouse.get());
-        return userService.checkIsLoginAndRedirect("posthouse_page", session);
+        return userService.checkIsLoginAndRedirect("edithouse_page", session);
     }
-    
-    @PostMapping("/edit/{id}")
-    public String editHouse(@PathVariable int id) {
+
+    @PostMapping("/edit")
+    public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request) {
+        String email = getEmailFromSession(session);
+        if (email == null) {
+            return "redirect:/user/login";
+        }
+        Optional<User> optUser = userService.getUserByEmail(email);
+        if (optUser.isEmpty()) {
+            return "redirect:/user/login";
+        }
+        House house = new House(request.getTitle(), request.getAddress(),
+                request.getCapacity(), request.getDescription(),
+                request.getFloor(),
+                optUser.get(), request.getMonthly_fee(),
+                request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(),
+                request.getIs_suite());
+        house.setId(id);
+        houseService.saveHouse(house);
         return "redirect:/house";
     }
 
@@ -107,12 +128,12 @@ public class HouseController {
                 request.getIs_suite());
         houseService.saveHouse(house);
         Set<HouseImage> imagesList = new HashSet<>();
-        for (MultipartFile file: request.getImages()) {
+        for (MultipartFile file : request.getImages()) {
             byte[] image = ImageUtils.covertToBytes(file);
-            System.out.println("image"+ image);
-//            HouseImage houseImage = new HouseImage(house, image);
+            System.out.println("image" + image);
+            // HouseImage houseImage = new HouseImage(house, image);
             HouseImage houseImage = new HouseImage(house, image);
-            HouseImage savedHouseImage =  houseImageRepo.save(houseImage);
+            HouseImage savedHouseImage = houseImageRepo.save(houseImage);
             imagesList.add(savedHouseImage);
         }
         house.setHouseImages(imagesList);
