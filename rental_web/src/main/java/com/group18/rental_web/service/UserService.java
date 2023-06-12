@@ -59,4 +59,26 @@ public class UserService {
         }
         return path;
     }
+
+
+    public String getEmailFromSession(HttpSession session) {
+        try {
+            return (String) session.getAttribute("email");
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+	public Optional<User> getUserByLoginSession(HttpSession session) {
+        String email = getEmailFromSession(session);
+        if (email == null) {
+            return null;
+        }
+        Optional<User> optUser = getUserByEmail(email);
+        if (optUser.isEmpty()) {
+			return null;
+        }
+		return optUser;
+	}
 }

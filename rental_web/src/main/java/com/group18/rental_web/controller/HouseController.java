@@ -39,14 +39,6 @@ public class HouseController {
     @Autowired
     HouseImageRepo houseImageRepo;
 
-    public String getEmailFromSession(HttpSession session) {
-        try {
-            return (String) session.getAttribute("email");
-        } catch (IllegalStateException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
 
     @GetMapping("{id}")
     public String getHouseDetail(@PathVariable int id, Model model) {
@@ -69,6 +61,11 @@ public class HouseController {
         return "search_page";
     }
 
+    @DeleteMapping("/delete/{id}")
+    public String deleteHouse(@PathVariable int id, HttpSession session) {
+
+    }
+
     // 編輯房屋
     @GetMapping("/edit/{id}")
     public String getEditPage(@PathVariable int id, HttpSession session, Model model) {
@@ -84,13 +81,18 @@ public class HouseController {
 
     @PostMapping("/edit")
     public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request) {
-        String email = getEmailFromSession(session);
-        if (email == null) {
-            return "redirect:/user/login";
-        }
-        Optional<User> optUser = userService.getUserByEmail(email);
+
+        Optional<User> optUser = userService.getUserByLoginSession(session);
         if (optUser.isEmpty()) {
             return "redirect:/user/login";
+        }
+        Optional<House> optHouse = houseService.getHouseDatailById(id);
+        if (optHouse.isEmpty()) {
+            return "redirect:/house";
+        }
+        if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
+            // not permit
+            return "redirect:/house";
         }
         House house = new House(request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(),
@@ -112,11 +114,7 @@ public class HouseController {
 
     @PostMapping("/create")
     public String createHouse(@Valid CreateHouseRequest request, HttpSession session, Model model) {
-        String email = getEmailFromSession(session);
-        if (email == null) {
-            return "redirect:/user/login";
-        }
-        Optional<User> optUser = userService.getUserByEmail(email);
+        Optional<User> optUser = userService.getUserByLoginSession(session);
         if (optUser.isEmpty()) {
             return "redirect:/user/login";
         }
