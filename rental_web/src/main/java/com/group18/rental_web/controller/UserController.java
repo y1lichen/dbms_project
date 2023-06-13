@@ -40,10 +40,11 @@ public class UserController {
         return "personal_page";
     }
 
-    @GetMapping("/create")
-    public String getSignUpPage() {
-        return "register_page";
-    }
+    // @Deprecated
+    // @GetMapping("/create")
+    // public String getSignUpPage() {
+    //     return "register_page";
+    // }
 
     @PostMapping("/create")
     public String createUser(@Valid SignUpRequest request) {
