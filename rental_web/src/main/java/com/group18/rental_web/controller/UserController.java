@@ -1,11 +1,14 @@
 package com.group18.rental_web.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import com.group18.rental_web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +31,12 @@ public class UserController {
     // private JwtUtils jwtUtils = new JwtUtils();
 
     @GetMapping("/personal")
-    public String getPersonalPage(HttpSession session) {
-        // TODO
+    public String getPersonalPage(HttpSession session, Model model) {
+        Optional<User> optUser = userService.getUserByLoginSession(session);
+        if (optUser.isEmpty()) {
+            return "redirect:/user/login";
+        }
+        model.addAttribute("user", optUser.get());
         return "personal_page";
     }
 

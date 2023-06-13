@@ -12,89 +12,76 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private Encoder encoder = new Encoder();
-    @Autowired
-    private UserRepo repo;
+	private Encoder encoder = new Encoder();
+	@Autowired
+	private UserRepo repo;
 
-    public void saveUser(User user) {
-        repo.save(user);
-    }
-
-    public Optional<User> getUserById(int id) {
-        return repo.findById(id);
+	public void saveUser(User user) {
+		repo.save(user);
 	}
 
-    public Optional<User> getUserByEmail(String email) {
-        return repo.findByEmail(email);
-    }
+	public Optional<User> getUserById(int id) {
+		return repo.findById(id);
+	}
+
+	public Optional<User> getUserByEmail(String email) {
+		return repo.findByEmail(email);
+	}
 
 	public void deleteUser(User user) {
 		repo.delete(user);
 	}
 
-    public Optional<User> findByEmail(String email) {
-        return repo.findByEmail(email);
-    }
-
-    public boolean existsByEmail(String email) {
-        return repo.existsByEmail(email);
-    }
-
-    public String validate(String email, String password) {
-        Optional<User> optUser = findByEmail(email);
-        if (optUser.isEmpty()) return null;
-        User user = optUser.get();
-        if (encoder.matches(password, user.getHashedPassword())) {
-            return user.getEmail();
-        }
-        return null;
-    }
-
-	public boolean checkIsLogin(HttpSession session) {
-        String email = getEmailFromSession(session);
-		if (email == null || email.equals("")) {
-			return false;
-		}
-		Optional<User> optUser = getUserByEmail(email);
-		if (optUser.isEmpty()) {
-			return false;
-		}
-		return true;
+	public Optional<User> findByEmail(String email) {
+		return repo.findByEmail(email);
 	}
 
+	public boolean existsByEmail(String email) {
+		return repo.existsByEmail(email);
+	}
 
-    public String checkIsLoginAndRedirect(String path, HttpSession session)  {
-        String email = getEmailFromSession(session);
-        if (email == null || email.equals("")) {
-            // 沒有登入的話就導回登入頁
-            return "redirect:/user/login";
-        }
+	public String validate(String email, String password) {
+		Optional<User> optUser = findByEmail(email);
+		if (optUser.isEmpty())
+			return null;
+		User user = optUser.get();
+		if (encoder.matches(password, user.getHashedPassword())) {
+			return user.getEmail();
+		}
+		return null;
+	}
+
+	public String checkIsLoginAndRedirect(String path, HttpSession session) {
+		String email = getEmailFromSession(session);
+		if (email == null || email.equals("")) {
+			// 沒有登入的話就導回登入頁
+			return "redirect:/user/login";
+		}
 		Optional<User> optUser = getUserByEmail(email);
 		if (optUser.isEmpty()) {
-            return "redirect:/user/login";
+			return "redirect:/user/login";
 		}
-        return path;
-    }
+		return path;
+	}
 
-
-    public String getEmailFromSession(HttpSession session) {
-        try {
-            return (String) session.getAttribute("email");
-        } catch (IllegalStateException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
+	public String getEmailFromSession(HttpSession session) {
+		try {
+			return (String) session.getAttribute("email");
+		} catch (IllegalStateException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
 
 	public Optional<User> getUserByLoginSession(HttpSession session) {
-        String email = getEmailFromSession(session);
-        if (email == null) {
-            return null;
-        }
-        Optional<User> optUser = getUserByEmail(email);
-        if (optUser.isEmpty()) {
+		String email = getEmailFromSession(session);
+		if (email == null) {
 			return null;
-        }
+		}
+		Optional<User> optUser = getUserByEmail(email);
+		if (optUser.isEmpty()) {
+			return null;
+		}
 		return optUser;
 	}
 }
