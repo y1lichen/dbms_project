@@ -21,8 +21,9 @@
 </head>
 <body>
     <section class="header">
-        <div class="con">
-            <h2 class="title">Please reset the website and try again!</h2>
+		<div class="con" th:object="${error}">
+			<h1 class="title" th:text="${error.code}">404</h1>
+			<h2 class="title" th:text="${error.message}">error message</h2>
         </div>
     </section>
 

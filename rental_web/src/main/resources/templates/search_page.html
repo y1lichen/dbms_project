@@ -142,9 +142,14 @@
 <!--                                 <button>
                                     <i class="fas fa-heart"></i>
                                 </button> -->
-                                    <form method="get" action="#" th:action="@{/house/edit/}+${house.id}">
-                                    <button>
+                                <form method="get" action="#" th:action="@{/house/edit/}+${house.id}">
+                                    <button type="submit">
                                         <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </form>
+                                <form method="delete" action="#" th:action="@{/house/delete/}+${house.id}" th:method="delete">
+                                    <button type="submit">
+                                        <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
                                 <button>

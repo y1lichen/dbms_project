@@ -76,11 +76,11 @@ public class UserService {
 	public Optional<User> getUserByLoginSession(HttpSession session) {
 		String email = getEmailFromSession(session);
 		if (email == null) {
-			return null;
+			return Optional.empty();
 		}
 		Optional<User> optUser = getUserByEmail(email);
 		if (optUser.isEmpty()) {
-			return null;
+			return Optional.empty();
 		}
 		return optUser;
 	}
