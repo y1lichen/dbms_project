@@ -48,7 +48,7 @@ public class HouseController {
         return "search_detail_page";
     }
 
-    @GetMapping("")
+    @GetMapping("/search")
     public String getHouses(Model model) {
         // ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
         List<House> houses = houseService.getAllHouses();
