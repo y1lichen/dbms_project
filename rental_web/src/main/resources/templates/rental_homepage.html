@@ -55,7 +55,7 @@
         <div class="form_box login">
           <!-- 登入部分 -->
           <h2>Login</h2>
-          <form method="post" action="#" th:action="@{/users/signin}">
+          <form method="post" action="#" th:action="@{/user/login}">
             <div class="input_box">
               <span class="icon"><i class="fa-solid fa-envelope fa-bounce"></i></span>
               <input type="email" name="email" required>
@@ -82,7 +82,7 @@
         <div class="form_box register">
           <!-- 註冊部分 -->
           <h2>Registration</h2>
-          <form method="post" th:action="@{/users/create}">
+          <form method="post" th:action="@{/user/create}">
             <div class="input_box">
               <span class="icon"><i class="fa-solid fa-user fa-bounce"></i></span>
               <input type="username" id="username" name="username" required>

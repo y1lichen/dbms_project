@@ -8,8 +8,6 @@ import javax.validation.Valid;
 import com.group18.rental_web.model.HouseImage;
 import com.group18.rental_web.repository.HouseImageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
@@ -38,7 +35,6 @@ public class HouseController {
     private HouseService houseService;
     @Autowired
     HouseImageRepo houseImageRepo;
-
 
     @GetMapping("{id}")
     public String getHouseDetail(@PathVariable int id, Model model) {
@@ -153,16 +149,6 @@ public class HouseController {
         //
         model.addAttribute("houses", houseService.getAllHouses());
         return "redirect:/house";
-    }
-
-    @DeleteMapping("")
-    public ResponseEntity<String> deleteHouse(@RequestParam("id") int id) {
-        Optional<House> optHouse = houseService.getHouseDatailById(id);
-        if (optHouse.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("house %d not found", id));
-        }
-        houseService.deleteHouse(id);
-        return ResponseEntity.status(HttpStatus.OK).body("successfully delete house");
     }
 
     @PostMapping("/selector")
