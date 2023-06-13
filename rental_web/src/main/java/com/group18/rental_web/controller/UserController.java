@@ -1,6 +1,5 @@
 package com.group18.rental_web.controller;
 
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -25,11 +24,12 @@ public class UserController {
 
     private Encoder encoder = new Encoder();
 
-    //改用session登入，就用不到這個了
-//    private JwtUtils jwtUtils = new JwtUtils();
+    // 改用session登入，就用不到這個了
+    // private JwtUtils jwtUtils = new JwtUtils();
 
     @GetMapping("/personal")
-    public String getPersonalPage() {
+    public String getPersonalPage(HttpSession session) {
+        // TODO
         return "personal_page";
     }
 
@@ -45,7 +45,7 @@ public class UserController {
             return "redirect:/user/create";
         }
         User user = new User(request.getEmail(), encoder.encode(request.getPassword()),
-            request.getUsername(), request.getGender(), request.getPhone(), request.getIs_foreign());
+                request.getUsername(), request.getGender(), request.getPhone(), request.getIs_foreign());
         userService.saveUser(user);
         System.out.println("User " + user.getEmail() + " created.");
         return "redirect:/user/login";
@@ -56,23 +56,22 @@ public class UserController {
         return "rental_homepage";
     }
 
-
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public String authenticateUser(@Valid LoginRequest request, HttpSession session) {
         session.setAttribute("email", "");
         String email = userService.validate(request.getEmail(), request.getPassword());
         if (email != null) {
             System.out.println("login!!!");
             session.setAttribute("email", email);
-            return "redirect:/personal";
+            return "redirect:/user/personal";
         }
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
     @PostMapping("/logout")
     public String signOut(HttpSession session) {
         session.setAttribute("email", "");
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
 }

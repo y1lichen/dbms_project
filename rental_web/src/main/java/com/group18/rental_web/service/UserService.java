@@ -50,13 +50,29 @@ public class UserService {
         return null;
     }
 
+	public boolean checkIsLogin(HttpSession session) {
+        String email = getEmailFromSession(session);
+		if (email == null || email.equals("")) {
+			return false;
+		}
+		Optional<User> optUser = getUserByEmail(email);
+		if (optUser.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+
 
     public String checkIsLoginAndRedirect(String path, HttpSession session)  {
-        String email = (String) session.getAttribute("email");
+        String email = getEmailFromSession(session);
         if (email == null || email.equals("")) {
             // 沒有登入的話就導回登入頁
-            return "rental_homepage";
+            return "redirect:/user/login";
         }
+		Optional<User> optUser = getUserByEmail(email);
+		if (optUser.isEmpty()) {
+            return "redirect:/user/login";
+		}
         return path;
     }
 
