@@ -63,7 +63,20 @@ public class HouseController {
 
     @DeleteMapping("/delete/{id}")
     public String deleteHouse(@PathVariable int id, HttpSession session) {
-
+        Optional<User> optUser = userService.getUserByLoginSession(session);
+        if (optUser.isEmpty()) {
+            return "redirect:/user/login";
+        }
+        Optional<House> optHouse = houseService.getHouseDatailById(id);
+        if (optHouse.isEmpty()) {
+            return "redirect:/house";
+        }
+        if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
+            // not permit
+            return "redirect:/house";
+        }
+        houseService.deleteHouse(id);
+        return "redirect:/house";
     }
 
     // 編輯房屋
