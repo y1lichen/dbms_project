@@ -1,6 +1,5 @@
 package com.group18.rental_web.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
