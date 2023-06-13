@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,16 +40,16 @@
         <a href="#" class="logo"><i class="fa-solid fa-house">logo</i></a>
         <div class="nav_links" id="nav_links">
           <ul>
-            <li><a href="./rental_homepage.html">Home</a></li>
-            <li><a href="./search_page.html">Search</a></li>
+            <li><a href="./rental_homepage.html" th:href="@{/user/login}">Home</a></li>
+            <li><a href="./search_page.html" th:href="@{/house/search}">Search</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Personal</a></li>
             <!--子安新增-->
             <li class="dropdown">
                 <a href="#">Others</a>
                 <div class="dropdown-content">
-                    <a href="./post_page.html">Post</a>
-                    <a href="#">Settings</a>
+                    <a href="./posthouse_page.html" th:href="@{/house/create}">Post</a>
+                    <a href="./personal_page.html" th:href="@{/user/personal}">Settings</a>
                     <a href="#">Sign out</a>
                 </div>
             </li>

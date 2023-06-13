@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,8 +30,8 @@
         <div class="nav_links" id="nav_links">
           <i class="fa-solid fa-xmark menu_btn" onclick="hideMenu()"></i>
           <ul>
-            <li><a href="./rental_homepage.html">Home</a></li>
-            <li><a href="./search_page.html">Search</a></li>
+            <li><a href="./rental_homepage.html" th:href="@{/user/login}">Home</a></li>
+            <li><a href="./search_page.html" th:href="@{/house/search}">Search</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
           </ul>

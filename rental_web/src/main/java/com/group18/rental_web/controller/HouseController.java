@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group18.rental_web.model.ErrorMessage;
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.payload.request.CreateHouseRequest;
@@ -58,7 +59,7 @@ public class HouseController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteHouse(@PathVariable int id, HttpSession session) {
+    public String deleteHouse(@PathVariable int id, HttpSession session, Model model) {
         Optional<User> optUser = userService.getUserByLoginSession(session);
         if (optUser.isEmpty()) {
             return "redirect:/user/login";
@@ -69,7 +70,10 @@ public class HouseController {
         }
         if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
             // not permit
-            return "redirect:/house";
+            ErrorMessage error = new ErrorMessage(403,
+                    "Forbidden, you do not have permission to accress.");
+            model.addAttribute("error", error);
+            return "error_page";
         }
         houseService.deleteHouse(id);
         return "redirect:/house";
@@ -89,7 +93,7 @@ public class HouseController {
     }
 
     @PostMapping("/edit")
-    public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request) {
+    public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request, Model model) {
 
         Optional<User> optUser = userService.getUserByLoginSession(session);
         if (optUser.isEmpty()) {
@@ -101,7 +105,11 @@ public class HouseController {
         }
         if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
             // not permit
-            return "redirect:/house";
+            ErrorMessage error = new ErrorMessage(403,
+                    "Forbidden, you do not have permission to accress.");
+            model.addAttribute("error", error);
+            return "error_page";
+            // return "redirect:/house";
         }
         House house = new House(request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(),
