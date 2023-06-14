@@ -50,7 +50,11 @@
                 <div class="dropdown-content">
                     <a href="./posthouse_page.html" th:href="@{/house/create}">Post</a>
                     <a href="./personal_page.html" th:href="@{/user/personal}">Settings</a>
-                    <a href="#">Sign out</a>
+                    <!-- <a href="#">Sign out</a> -->
+
+                      <form method="post" action="#" th:action="@{/user/logout}">
+                        <button type="submit">Logout</button>
+                    </form>
                 </div>
             </li>
             <!--子安新增end-->

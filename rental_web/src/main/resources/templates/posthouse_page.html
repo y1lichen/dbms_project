@@ -42,15 +42,20 @@
           <ul>
             <li><a href="./rental_homepage.html" th:href="@{/user/login}">Home</a></li>
             <li><a href="./search_page.html" th:href="@{/house}">Search</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Personal</a></li>
+            <!-- <li><a href="#">About</a></li> -->
+            <!-- <li><a href="#">Personal</a></li> -->
+            <li><a href="./personal_page.html" th:href="@{/user/personal}">Personal</a></li>
             <!--子安新增-->
             <li class="dropdown">
                 <a href="#">Others</a>
                 <div class="dropdown-content">
                     <a href="./posthouse_page.html" th:href="@{/house/create}">Post</a>
                     <a href="./personal_page.html" th:href="@{/user/personal}">Settings</a>
-                    <a href="#">Sign out</a>
+                    <!-- <a href="#">Sign out</a> -->
+
+                      <form method="post" action="#" th:action="@{/user/logout}">
+                        <button type="submit">Sign out</button>
+                    </form>
                 </div>
             </li>
             <!--子安新增end-->
