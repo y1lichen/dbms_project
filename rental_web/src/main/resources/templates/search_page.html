@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -141,7 +141,9 @@
                 </div>
                 <div class="col-md-4 col-sm-6" th:each="house: ${houses}">
                     <div class="card">
-                        <img src="./images/home.jpg" class="card-img-top card_pic" alt="..." th:src="@{'data:image/jpeg;base64,'+${house.houseImages[0].getBase64()}}">
+                            <div th:if="${!house.houseImages.empty}">
+                                <img src="./images/home.jpg" class="card-img-top card_pic" alt="..." th:src="@{'data:image/jpeg;base64,'+${house.houseImages[0].getBase64()}}">
+                            </div>
                         <div class="card-body">
                             <div class="card-btns">
 <!--                                 <button>
@@ -198,61 +200,61 @@
                 <!-- 正文end -->
 
                 <!-- demand post -->
-                <div class="container p-5">
-                    <h3 class="post_title">特別需求發文 Special Post</h3>
-                    <div class="slider responsive">
-                        <!-- 之後要抓使用者發出的post中的文字  -->
-
-                        <!-- 1 -->
-                        <div class="post_content" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="card-link">聯絡發文者 Contact</a>
-                            </div>
-                        </div>
-                        <!-- 1  -->
-
-                        <!-- 2 -->
-                       <div class="pho">
-
-                        </div>
-                        <!-- 2 -->
-
-                        <!-- 3 可是照片之間padding失效 -->
-                        <div class="post_content" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="card-link">聯絡發文者 Contact</a>
-                            </div>
-                        </div>
-                        <!-- 3 -->
-
-                        <!-- 4 -->
-                        <div class="pho">
-
-                        </div>
-                        <!-- 4 -->
-
-                        <!-- 5 -->
-                        <div class="post_content" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="card-link">聯絡發文者 Contact</a>
-                            </div>
-                        </div>
-                        <!-- 5 -->
-
-                        <!-- 6 -->
-                        <div class="pho">
-
-                        </div>
-                        <!-- 6 -->
-
-                    </div>
-                </div>
+                <!-- <div class="container p-5"> -->
+                <!--     <h3 class="post_title">特別需求發文 Special Post</h3> -->
+                <!--     <div class="slider responsive"> -->
+                <!--         <!-- 之後要抓使用者發出的post中的文字  --> -->
+                <!--  -->
+                <!--         <!-- 1 --> -->
+                <!--         <div class="post_content" style="width: 18rem;"> -->
+                <!--             <div class="card-body"> -->
+                <!--               <h5 class="card-title">Card title</h5> -->
+                <!--               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!--               <a href="#" class="card-link">聯絡發文者 Contact</a> -->
+                <!--             </div> -->
+                <!--         </div> -->
+                <!--         <!-- 1  --> -->
+                <!--  -->
+                <!--         <!-- 2 --> -->
+                <!--        <div class="pho"> -->
+                <!--  -->
+                <!--         </div> -->
+                <!--         <!-- 2 --> -->
+                <!--  -->
+                <!--         <!-- 3 可是照片之間padding失效 --> -->
+                <!--         <div class="post_content" style="width: 18rem;"> -->
+                <!--             <div class="card-body"> -->
+                <!--               <h5 class="card-title">Card title</h5> -->
+                <!--               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!--               <a href="#" class="card-link">聯絡發文者 Contact</a> -->
+                <!--             </div> -->
+                <!--         </div> -->
+                <!--         <!-- 3 --> -->
+                <!--  -->
+                <!--         <!-- 4 --> -->
+                <!--         <div class="pho"> -->
+                <!--  -->
+                <!--         </div> -->
+                <!--         <!-- 4 --> -->
+                <!--  -->
+                <!--         <!-- 5 --> -->
+                <!--         <div class="post_content" style="width: 18rem;"> -->
+                <!--             <div class="card-body"> -->
+                <!--               <h5 class="card-title">Card title</h5> -->
+                <!--               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <!--               <a href="#" class="card-link">聯絡發文者 Contact</a> -->
+                <!--             </div> -->
+                <!--         </div> -->
+                <!--         <!-- 5 --> -->
+                <!--  -->
+                <!--         <!-- 6 --> -->
+                <!--         <div class="pho"> -->
+                <!--  -->
+                <!--         </div> -->
+                <!--         <!-- 6 --> -->
+                <!--  -->
+                <!--     </div> -->
+                <!-- </div> -->
                 <!-- demand post end -->
 
             </div>

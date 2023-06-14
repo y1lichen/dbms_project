@@ -23,7 +23,6 @@ import com.group18.rental_web.payload.request.CreateHouseRequest;
 import com.group18.rental_web.payload.request.SelectorRequest;
 import com.group18.rental_web.service.HouseService;
 import com.group18.rental_web.service.UserService;
-import com.group18.rental_web.utils.ImageUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -113,11 +112,20 @@ public class HouseController {
         House house = optHouse.get();
         Set<HouseImage> imagesList = new HashSet<>();
         for (MultipartFile file : request.getImages()) {
-            byte[] image = ImageUtils.covertToBytes(file);
-            System.out.println("image" + image);
-            HouseImage houseImage = new HouseImage(house, image);
-            HouseImage savedHouseImage = houseImageRepo.save(houseImage);
-            imagesList.add(savedHouseImage);
+
+            try {
+                byte[] image = file.getBytes();
+                HouseImage houseImage = new HouseImage(house, image);
+                HouseImage savedHouseImage = houseImageRepo.save(houseImage);
+                imagesList.add(savedHouseImage);
+            } catch (Exception e) {
+                System.out.println(e.getLocalizedMessage());
+            }
+            // byte[] image = ImageUtils.covertToBytes(file);
+            // System.out.println("image" + image);
+            // HouseImage houseImage = new HouseImage(house, image);
+            // HouseImage savedHouseImage = houseImageRepo.save(houseImage);
+            // imagesList.add(savedHouseImage);
         }
         houseService.editHouse(id, request.getTitle(), request.getAddress(),
                 request.getCapacity(), request.getDescription(), request.getFloor(),
@@ -149,12 +157,15 @@ public class HouseController {
         houseService.saveHouse(house);
         Set<HouseImage> imagesList = new HashSet<>();
         for (MultipartFile file : request.getImages()) {
-            byte[] image = ImageUtils.covertToBytes(file);
-            System.out.println("image" + image);
-            // HouseImage houseImage = new HouseImage(house, image);
-            HouseImage houseImage = new HouseImage(house, image);
-            HouseImage savedHouseImage = houseImageRepo.save(houseImage);
-            imagesList.add(savedHouseImage);
+            // byte[] image = ImageUtils.covertToBytes(file);
+            try {
+                byte[] image = file.getBytes();
+                HouseImage houseImage = new HouseImage(house, image);
+                HouseImage savedHouseImage = houseImageRepo.save(houseImage);
+                imagesList.add(savedHouseImage);
+            } catch (Exception e) {
+                System.out.println(e.getLocalizedMessage());
+            }
         }
         house.setHouseImages(imagesList);
         houseService.saveHouse(house);
