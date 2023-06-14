@@ -92,7 +92,7 @@ public class HouseController {
         return userService.checkIsLoginAndRedirect("edithouse_page", session);
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/edit/{id}")
     public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request, Model model) {
 
         Optional<User> optUser = userService.getUserByLoginSession(session);
@@ -109,16 +109,21 @@ public class HouseController {
                     "Forbidden, you do not have permission to accress.");
             model.addAttribute("error", error);
             return "error_page";
-            // return "redirect:/house";
         }
-        House house = new House(request.getTitle(), request.getAddress(),
-                request.getCapacity(), request.getDescription(),
-                request.getFloor(),
-                optUser.get(), request.getMonthly_fee(),
-                request.getRent_term(), request.getGender(), request.getPrepaid_term(), request.getSize(),
-                request.getIs_suite());
-        house.setId(id);
-        houseService.saveHouse(house);
+        House house = optHouse.get();
+        Set<HouseImage> imagesList = new HashSet<>();
+        for (MultipartFile file : request.getImages()) {
+            byte[] image = ImageUtils.covertToBytes(file);
+            System.out.println("image" + image);
+            HouseImage houseImage = new HouseImage(house, image);
+            HouseImage savedHouseImage = houseImageRepo.save(houseImage);
+            imagesList.add(savedHouseImage);
+        }
+        houseService.editHouse(id, request.getTitle(), request.getAddress(),
+                request.getCapacity(), request.getDescription(), request.getFloor(),
+                request.getMonthly_fee(), request.getRent_term(), request.getGender(),
+                request.getPrepaid_term(), request.getSize(), request.getIs_suite(),
+                imagesList);
         return "redirect:/house";
     }
 

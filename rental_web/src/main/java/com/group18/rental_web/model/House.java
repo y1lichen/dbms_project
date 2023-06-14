@@ -70,6 +70,10 @@ public class House {
         return id;
     }
 
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
     public int getGender() {
         return gender;
     }
@@ -142,7 +146,12 @@ public class House {
     private Set<HouseImage> houseImages;
 
     public void setHouseImages(Set<HouseImage> houseImages) {
-        this.houseImages = houseImages;
+        if (this.houseImages == null) {
+            this.houseImages = houseImages;
+        } else if (this.houseImages != houseImages) {
+            this.houseImages.clear();
+            this.houseImages.addAll(houseImages);
+        }
     }
 
     public Set<HouseImage> getHouseImages() {

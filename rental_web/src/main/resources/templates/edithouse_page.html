@@ -71,53 +71,53 @@
 
         <div class="post_box">
                 <div class="form_box">
-                    <form method="post" th:object="${house}" th:action="@{/house/edit}" enctype="multipart/form-data">
+                    <form method="post" th:object="${house}" th:action="@{/house/edit/}+${house.id}" enctype="multipart/form-data">
                         <h3>Post Information 刊登資訊</h3>
                         <div class="input_box">
                             <span class="icon"><i class='bx bx-file-blank'></i></span>
                             <label for="">標題</label>
-                            <input type="text" id="title" name="title" placeholder="title" required>
+                            <input th:value="${house.title}" type="text" id="title" name="title" placeholder="title" required>
                         </div>
 
                         <div class="input_box">
                             <span class="icon"><i class='bx bx-map'></i></span>
                             <label for="">地址</label>
-                            <input th:field="${house.address}" type="text" id="address" name="address" placeholder="address" required>
+                            <input th:value="${house.address}" type="text" id="address" name="address" placeholder="address" required>
 
                         </div>
 
                         <div class="input_box">
                             <span class="icon"><i class='bx bxs-message-dots'></i></span>
                             <label for="">簡介</label>
-                            <input th:field="${house.description}" type="text" id="description" name="description" placeholder="description" required>
+                            <input th:value="${house.description}" type="text" id="description" name="description" placeholder="description" required>
                         </div>
 
                         <div class="input_box">
                             <span class="icon"><i class='bx bx-money-withdraw'></i></span>
                             <label for="">月租</label>
-                            <input th:field="${house.rentPerMonth}" type="text" id="monthly_fee" name="monthly_fee" placeholder="monthly_fee" required>
+                            <input th:value="${house.rentPerMonth}" type="number" id="monthly_fee" name="monthly_fee" placeholder="monthly_fee" required>
                         </div>
 
                         <div class="input_box">
                             <span class="icon"><i class='bx bxs-time-five'></i></span>
                             <label for="">租期</label>
-                            <input th:field="${house.rentTerm}" type="text" id="rent_term" name="rent_term" placeholder="rent_term" required>
+                            <input th:value="${house.rentTerm}" type="number" id="rent_term" name="rent_term" placeholder="rent_term" required>
                         </div>
                         <div class="input_box">
                             <span class="icon"><i class='bx bxs-time-five'></i></span>
                             <label for="">押金月數</label>
-                            <input th:field="${house.prePaidTerm}" type="text" id="rent_term" name="prepaid_term" placeholder="rent_term" required>
+                            <input th:value="${house.prePaidTerm}" type="number" id="rent_term" name="prepaid_term" placeholder="prepaid_term" required>
                         </div>
                         <div class="input_box">
                             <span class="icon"><i class='bx bxs-time-five'></i></span>
                             <label for="">坪數</label>
-                            <input th:field="${house.size}" type="text" id="rent_term" name="size" placeholder="rent_term" required>
+                            <input th:value="${house.size}" type="text" id="rent_term" name="size" placeholder="rent_term" required>
                         </div>
 
                         <div class="input_box">
                             <span class="icon"><i class='bx bxs-user-plus'></i></span>
                             <label for="">人數</label>
-                            <input th:field="${house.capacity}" type="text" id="number_of_people" name="capacity" placeholder="number of people" required>
+                            <input th:value="${house.capacity}" type="text" id="number_of_people" name="capacity" placeholder="number of people" required>
                         </div>
 
                         <div class="radio_box">
