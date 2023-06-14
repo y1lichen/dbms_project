@@ -49,7 +49,7 @@ public class HouseController {
         return "search_detail_page";
     }
 
-    @GetMapping("/search")
+    @GetMapping("")
     public String getHouses(Model model) {
         // ResponseEntity.status(HttpStatus.OK).body(houseService.getAllHouses());
         List<House> houses = houseService.getAllHouses();
