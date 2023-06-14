@@ -109,13 +109,13 @@ public class HouseController {
             model.addAttribute("error", error);
             return "error_page";
         }
-        House house = optHouse.get();
         Set<HouseImage> imagesList = new HashSet<>();
         for (MultipartFile file : request.getImages()) {
 
             try {
                 byte[] image = file.getBytes();
-                HouseImage houseImage = new HouseImage(house, image);
+                HouseImage houseImage = new HouseImage(image);
+                // HouseImage houseImage = new HouseImage(house, image);
                 HouseImage savedHouseImage = houseImageRepo.save(houseImage);
                 imagesList.add(savedHouseImage);
             } catch (Exception e) {
@@ -160,7 +160,8 @@ public class HouseController {
             // byte[] image = ImageUtils.covertToBytes(file);
             try {
                 byte[] image = file.getBytes();
-                HouseImage houseImage = new HouseImage(house, image);
+                HouseImage houseImage = new HouseImage(image);
+                // HouseImage houseImage = new HouseImage(house, image);
                 HouseImage savedHouseImage = houseImageRepo.save(houseImage);
                 imagesList.add(savedHouseImage);
             } catch (Exception e) {

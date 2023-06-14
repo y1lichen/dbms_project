@@ -19,9 +19,9 @@ public class HouseImage {
 
 //    private String base64;
 
-    @ManyToOne
-    @JoinColumn(name = "house_id")
-    private House house;
+    // @ManyToOne(cascade = CascadeType.REMOVE)
+    // @JoinColumn(name = "house_id")
+    // private House house;
 
     public HouseImage() {
     }
@@ -30,10 +30,14 @@ public class HouseImage {
 //        this.house = house;
 //        this.base64 = base64;
 //    }
-    public HouseImage(House house, byte[] imageByte) {
-        this.house = house;
+    // 用byte來存，否則會太長
+    public HouseImage(byte[] imageByte) {
         this.imageByte = imageByte;
     }
+    // public HouseImage(House house, byte[] imageByte) {
+    //     this.house = house;
+    //     this.imageByte = imageByte;
+    // }
 
     public int getId() {
         return id;
@@ -51,13 +55,13 @@ public class HouseImage {
         this.imageByte = imageByte;
     }
 
-    public void setHouse(House house) {
-        this.house = house;
-    }
-
-    public House getHouse() {
-        return house;
-    }
+    // public void setHouse(House house) {
+    //     this.house = house;
+    // }
+    //
+    // public House getHouse() {
+    //     return house;
+    // }
 
     public String getBase64() {
         return ImageUtils.getBase64String(imageByte);

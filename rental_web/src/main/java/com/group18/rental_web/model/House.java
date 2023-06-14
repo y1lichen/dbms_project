@@ -142,7 +142,7 @@ public class House {
         this.floor = floor;
     }
 
-    @OneToMany(orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<HouseImage> houseImages;
 
     public void setHouseImages(Set<HouseImage> houseImages) {
