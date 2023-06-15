@@ -62,6 +62,26 @@ public class House {
 
     private int clickTimes;
 
+    // @OneToMany(mappedBy = "house")
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> likedUser;
+
+    public void setLikedUser(Set<User> likedUser) {
+        this.likedUser = likedUser;
+    }
+
+    public Set<User> getLikedUser() {
+        return likedUser;
+    }
+
+    public void addLikedUser(User user) {
+        this.likedUser.add(user);
+    }
+
+    public void removeLikedUser(User user) {
+        this.likedUser.remove(user);
+    }
+
     public void setId(int id) {
         this.id = id;
     }

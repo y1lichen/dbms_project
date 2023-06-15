@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group18.rental_web.model.ErrorMessage;
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.payload.request.LoginRequest;
@@ -98,5 +99,23 @@ public class UserController {
         // 多一個toggle，共用一個api就好
         userService.toggleLikedHouse(user, optHouse.get());
         return "redirect:/house";
+    }
+
+    @GetMapping("/{id}")
+    public String getPersonalPage(@PathVariable int id, HttpSession session, Model model) {
+        Optional<User> optLoginUser = userService.getUserByLoginSession(session);
+        if (optLoginUser.isEmpty()) {
+            ErrorMessage error = new ErrorMessage(401, "forbidden");
+            model.addAttribute("error", error);
+            return "error_page";
+        }
+        Optional<User> optUser = userService.getUserById(id);
+        if (optUser.isEmpty()) {
+            ErrorMessage error = new ErrorMessage(404, "not found");
+            model.addAttribute("error", error);
+            return "error_page";
+        }
+        model.addAttribute("user", optUser.get());
+        return "public_personal_page";
     }
 }

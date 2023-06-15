@@ -4,9 +4,11 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -44,7 +46,8 @@ public class User {
     private boolean isSuper;
 
     // 收藏
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    // @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @ManyToMany(mappedBy = "likedUser", fetch = FetchType.EAGER)
     private Set<House> likedHouses;
 
     // 記錄
@@ -91,10 +94,12 @@ public class User {
     }
 
     public void addLikedHouse(House house) {
+        house.addLikedUser(this);
         this.likedHouses.add(house);
     }
 
     public void removeLikedHouse(House house) {
+        house.removeLikedUser(this);
         this.likedHouses.remove(house);
     }
 

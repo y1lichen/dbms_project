@@ -97,6 +97,12 @@
                         格局 1房--廳1衛 / 可遷入日 隨時可遷入 / 開伙 -- / 養寵物 -- </p> -->
                         <p>房東的話：</p>
                         <P th:text="${house.description}">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</P>
+                        <div th:if="${house.isSuite} == false">
+                          <p>可能可能室友</p>
+                          <div th:each="likedUser: ${house.likedUser}">
+                          <a th:href="@{/user/{id}(id=${likedUser.id})}" th:text="${likedUser.name}">name</a>
+                        </div>
+                        </div>
                     </div>
                     <div class="contact_btn">
                       <button type="button" class="btn btn-secondary">回搜尋頁主頁</button>
