@@ -81,10 +81,22 @@ public class HouseController {
     // 編輯房屋
     @GetMapping("/edit/{id}")
     public String getEditPage(@PathVariable int id, HttpSession session, Model model) {
+        Optional<User> optUser = userService.getUserByLoginSession(session);
         Optional<House> optHouse = houseService.getHouseDatailById(id);
+        if (optUser.isEmpty()) {
+            return "redirect:/user/login";
+        }
         // 找不到id就導回
         if (optHouse.isEmpty()) {
             return "redirect:/house";
+        }
+        // 不行改別人發的房子
+        if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
+            // not permit
+            ErrorMessage error = new ErrorMessage(403,
+                    "Forbidden, you do not have permission to accress.");
+            model.addAttribute("error", error);
+            return "error_page";
         }
         model.addAttribute("id", id);
         model.addAttribute("house", optHouse.get());
@@ -94,20 +106,9 @@ public class HouseController {
     @PostMapping("/edit/{id}")
     public String editHouse(@PathVariable int id, HttpSession session, @Valid CreateHouseRequest request, Model model) {
 
-        Optional<User> optUser = userService.getUserByLoginSession(session);
-        if (optUser.isEmpty()) {
-            return "redirect:/user/login";
-        }
         Optional<House> optHouse = houseService.getHouseDatailById(id);
         if (optHouse.isEmpty()) {
             return "redirect:/house";
-        }
-        if (optHouse.get().getOwner().getId() != optUser.get().getId()) {
-            // not permit
-            ErrorMessage error = new ErrorMessage(403,
-                    "Forbidden, you do not have permission to accress.");
-            model.addAttribute("error", error);
-            return "error_page";
         }
         Set<HouseImage> imagesList = new HashSet<>();
         for (MultipartFile file : request.getImages()) {
