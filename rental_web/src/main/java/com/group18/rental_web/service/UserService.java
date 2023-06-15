@@ -109,4 +109,8 @@ public class UserService {
 		System.out.println(user.getLikedHouses().size());
 	}
 
+    public void addHouseSearchHistory(User user, House house) {
+		user.addLikedHouse(house);
+        repo.save(user);
+    }
 }

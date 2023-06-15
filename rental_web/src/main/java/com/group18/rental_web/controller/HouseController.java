@@ -37,14 +37,20 @@ public class HouseController {
     HouseImageRepo houseImageRepo;
 
     @GetMapping("{id}")
-    public String getHouseDetail(@PathVariable int id, Model model) {
+    public String getHouseDetail(@PathVariable int id, Model model, HttpSession session) {
         Optional<House> optHouse = houseService.getHouseDatailById(id);
         if (optHouse.isEmpty()) {
             return "House not found";
         }
+        House house = optHouse.get();
         // 每查看一次就把觀看次數加一
         houseService.addClickTimes(id);
-        model.addAttribute("house", optHouse.get());
+        // 記錄
+        Optional<User> optUser = userService.getUserByLoginSession(session);
+        if (optUser.isPresent()) {
+            userService.addHouseSearchHistory(optUser.get(), house);
+        }
+        model.addAttribute("house", house);
         return "search_detail_page";
     }
 

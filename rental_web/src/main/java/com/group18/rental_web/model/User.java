@@ -24,7 +24,7 @@ public class User {
 
     private String name;
 
-    //    0: male, 1: female, 2: other
+    // 0: male, 1: female, 2: other
     private int gender;
 
     private String phone;
@@ -47,12 +47,16 @@ public class User {
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<House> likedHouses;
 
-    //constructor
+    // 記錄
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private Set<House> houseSearchHistory;
+
+    // constructor
     public User() {
     }
 
     public User(String email, String hashedPassword, String name, int gender,
-        String phone, boolean isForeign) {
+            String phone, boolean isForeign) {
         this.email = email;
         this.hashedPassword = hashedPassword;
         this.name = name;
@@ -173,4 +177,17 @@ public class User {
     public void setSuper(boolean aSuper) {
         isSuper = aSuper;
     }
+
+    public void setHouseSearchHistory(Set<House> houseSearchHistory) {
+        this.houseSearchHistory = houseSearchHistory;
+    }
+
+    public Set<House> getHouseSearchHistory() {
+        return houseSearchHistory;
+    }
+
+    public void addHouseSearchHistory(House house) {
+        this.houseSearchHistory.add(house);
+    }
+
 }
