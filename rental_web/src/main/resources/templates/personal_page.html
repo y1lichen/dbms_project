@@ -64,14 +64,14 @@
     <!-- 個人基本資料、相關紀錄 -->
 
 
-    <div class="container">
+    <div class="container" th:object="${user}">
       <div class="row">
         <!-- <div class="col-md-2 col-sm-12"> -->
         <!--   <ul class="photo"> -->
         <!--     <li><div><img src="../static/images/bear.jpg" /></div></li> -->
         <!--   </ul> -->
         <!-- </div> -->
-        <div class="col-md-10 col-sm-12" th:object="${user}">
+        <div class="col-md-10 col-sm-12">
           <div class="card">
             <div class="card-header">
               <h3>個人基本資料 Personal Information</h3> 
@@ -104,8 +104,11 @@
           <div class="card border-dark mb-3" style="max-width: 18rem;">
             <div class="card-header">收藏紀錄 likes record</div>
             <div class="card-body text-dark">
-              <h5 class="card-title">次數：5筆</h5>
-              <p class="card-text">(可能列出前3筆嗎之類的)</p>
+              <!-- <h5 class="card-title">次數：5筆</h5> -->
+              <p class="card-text"></p>
+              <div th:each="likedHouse: ${user.likedHouses}">
+                <a th:href="@{/house/{id}(id=${likedHouse.id})}" th:text="${likedHouse.title}">title</a>
+              </div>
             </div>
           </div>
         </div>

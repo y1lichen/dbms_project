@@ -104,6 +104,9 @@ public class UserService {
 		} else {
 			user.addLikedHouse(house);
 		}
+		repo.save(user);
+		System.out.println("toggle like!");
+		System.out.println(user.getLikedHouses().size());
 	}
 
 }
