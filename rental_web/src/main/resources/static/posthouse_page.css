@@ -27,7 +27,6 @@ body{
     text-decoration: none;   
 }
 
-
 /* nav */
 .nav{
     /* 由左至右 */
@@ -126,8 +125,8 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
     width: 75%;
-    height: 550px;
-    margin-top: 5%;
+    height: 750px;
+    margin-top: 15%;
     background: url(../static/images/home2.jpg)no-repeat;
     background-size: cover;
     background-position: center;
