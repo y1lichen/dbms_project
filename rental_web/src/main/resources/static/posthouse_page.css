@@ -126,7 +126,7 @@ body{
     width: 75%;
     height: 750px;
     margin-top: 15%;
-    background: url(../static/images/home2.jpg)no-repeat;
+    background: url(images/home2.jpg)no-repeat;
     background-size: cover;
     background-position: center;
     border-radius: 15px;
