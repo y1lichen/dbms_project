@@ -242,7 +242,7 @@ line-height: 1em;
     position: absolute;
     /* 設定在前一個元素(card)的位置 */
     right: -200px;
-    bottom: 140px;
+    bottom: 100px;
     margin: 5px 10px;
     transition: all .3s cubic-bezier(.28,1.29,.42,1.46);
 }
@@ -254,7 +254,7 @@ line-height: 1em;
 
 .card-btns button {
     color: tomato;
-    font-size: 22px;
+    font-size: 20px;
     background-color: transparent;
     border: none;
     opacity: .7;

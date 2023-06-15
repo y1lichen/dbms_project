@@ -142,13 +142,13 @@
                 <div class="col-md-4 col-sm-6" th:each="house: ${houses}">
                     <div class="card">
                             <div th:if="${!house.houseImages.empty}">
-                                <img src="./images/home.jpg" class="card-img-top card_pic" alt="..." th:src="@{'data:image/jpeg;base64,'+${house.houseImages[0].getBase64()}}">
+                                <img src="../static/images/home3.jpg" class="card-img-top card_pic" alt="..." th:src="@{'data:image/jpeg;base64,'+${house.houseImages[0].getBase64()}}">
                             </div>
                         <div class="card-body">
-                            <div class="card-btns">
-<!--                                 <button>
+                            <div class="card-btns">                                
+                                <button>
                                     <i class="fas fa-heart"></i>
-                                </button> -->
+                                </button> 
                                 <form method="get" action="#" th:action="@{/house/edit/}+${house.id}">
                                     <button type="submit">
                                         <i class="fa-solid fa-pen-to-square"></i>
@@ -159,13 +159,9 @@
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
-                                <button>
-                                    <i class="fa-solid fa-star"></i>
-                                </button>
-  <!--                               <button>
-                                    <i class="fab fa-facebook"></i>
-                                </button>
- -->                        </div>
+                                     
+                            </div>
+
                             <h5 class="card-title" th:text="${house.title}">Title</h5>
                             <p class="card-text" th:text="'地址：'+${house.address}">地址：台北市文山區指南路三段38巷</p>
                             <p class="card-text" th:text="'租金：'+${house.rentPerMonth}"></p>

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Noto+Sans+TC:wght@500&display=swap');
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+*{
+    font-family: 'Poppins', cursive,'Noto Sans TC';
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.header{
+    /* min-height至少要有這個高度 */
+    min-height: 100vh;
+    width: 100%;
+    /* background-image:linear-gradient(rgba(46, 186, 237, 0.614), rgba(253, 124, 124, 0.296)),url(./images/header_photo.jpg); */
+    background-image:url('../static/images/error.jpg');
+    background-size: cover;
+    background-position:center;
+    position: relative;
+    /* 超過header畫面的隱藏 */
+    overflow: hidden;
+    opacity: 0.7;
+}
+
+.con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.title{
+    margin-top: 15%;
+    padding: 2%;
+    color: black;
+    text-shadow: 2px 1px white;
+    border: 2px dashed rgb(42, 4, 4);
+}
