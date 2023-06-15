@@ -2,6 +2,7 @@ package com.group18.rental_web.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,7 +44,7 @@ public class User {
     private boolean isSuper;
 
     // 收藏
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<House> likedHouses;
 
     //constructor
@@ -83,6 +84,14 @@ public class User {
 
     public Set<House> getLikedHouses() {
         return likedHouses;
+    }
+
+    public void addLikedHouse(House house) {
+        this.likedHouses.add(house);
+    }
+
+    public void removeLikedHouse(House house) {
+        this.likedHouses.remove(house);
     }
 
     public void setId(int id) {

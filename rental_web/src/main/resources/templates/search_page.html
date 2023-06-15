@@ -146,9 +146,11 @@
                             </div>
                         <div class="card-body">
                             <div class="card-btns">                                
-                                <button>
-                                    <i class="fas fa-heart"></i>
-                                </button> 
+                                <form method="post" action="#" th:action="@{/user/like-house/}+${house.id}">
+                                    <button>
+                                        <i class="fas fa-heart"></i>
+                                    </button> 
+                                </form>
                                 <form method="get" action="#" th:action="@{/house/edit/}+${house.id}">
                                     <button type="submit">
                                         <i class="fa-solid fa-pen-to-square"></i>

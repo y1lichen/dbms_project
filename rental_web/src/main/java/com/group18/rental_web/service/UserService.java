@@ -1,5 +1,6 @@
 package com.group18.rental_web.service;
 
+import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.repository.UserRepo;
 import com.group18.rental_web.utils.Encoder;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -84,4 +86,24 @@ public class UserService {
 		}
 		return optUser;
 	}
+
+	public void addlikedHouse(User user, House house) {
+		user.addLikedHouse(house);
+		repo.save(user);
+	}
+
+	public void removeLikedHouse(User user, House house) {
+		user.removeLikedHouse(house);
+		repo.save(user);
+	}
+
+	public void toggleLikedHouse(User user, House house) {
+		Set<House> likedHouse = user.getLikedHouses();
+		if (likedHouse.contains(house)) {
+			user.removeLikedHouse(house);
+		} else {
+			user.addLikedHouse(house);
+		}
+	}
+
 }

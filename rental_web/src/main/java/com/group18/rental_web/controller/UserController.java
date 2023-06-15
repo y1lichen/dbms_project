@@ -5,14 +5,17 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import com.group18.rental_web.service.HouseService;
 import com.group18.rental_web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.payload.request.LoginRequest;
 import com.group18.rental_web.payload.request.SignUpRequest;
@@ -24,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private HouseService houseService;
 
     private Encoder encoder = new Encoder();
 
@@ -42,7 +48,7 @@ public class UserController {
 
     // @GetMapping("/create")
     // public String getSignUpPage() {
-    //     return "register_page";
+    // return "register_page";
     // }
 
     @PostMapping("/create")
@@ -81,4 +87,16 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+    @PostMapping("/like-house/{houseId}")
+    public String likeHouse(@PathVariable int houseId, HttpSession session) {
+        Optional<House> optHouse = houseService.getHouseDatailById(houseId);
+        Optional<User> optUser = userService.getUserByLoginSession(session);
+        if (optHouse.isEmpty() || optUser.isEmpty()) {
+            return "redirect:/house";
+        }
+        User user = optUser.get();
+        // 多一個toggle，共用一個api就好
+        userService.toggleLikedHouse(user, optHouse.get());
+        return "redirect:/house";
+    }
 }
