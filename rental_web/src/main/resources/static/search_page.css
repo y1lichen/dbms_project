@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+body{
+    background-color: #FDD692;
+}
+
 /* nav */
 .nav{
     /* 由左至右 */
@@ -193,7 +197,6 @@ line-height: 1em;
 /*  */
 
 .search{
-    background-color: #FDD692;
     position: relative;
     z-index: 1;
 }
