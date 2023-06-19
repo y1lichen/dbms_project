@@ -3,6 +3,8 @@ package com.group18.rental_web.model;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Entity
 public class House {
@@ -38,6 +40,7 @@ public class House {
     private String address;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private int capacity;
 
     @Column(nullable = false)
@@ -45,6 +48,7 @@ public class House {
 
     // 坪數
     @Column(nullable = false)
+    @Min(value = 0)
     private double size;
 
     // 是不是套房
@@ -53,22 +57,29 @@ public class House {
 
     // 0-> male, 1->female, 2->both
     @Column(nullable = false)
+    @Max(value = 2)
+    @Min(value = 0)
     private int gender;
 
     @ManyToOne
     private User owner;
 
     @Column(nullable = false)
+    @Min(value = 0)
     private int rentPerMonth;
 
     // unit: month
     @Column(nullable = false)
+    @Min(value = 0)
     private int rentTerm;
 
     @Column(nullable = false)
+    @Max(value = 5)
+    @Min(value = 1)
     private int floor;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private int prePaidTerm;
 
     private int clickTimes;
