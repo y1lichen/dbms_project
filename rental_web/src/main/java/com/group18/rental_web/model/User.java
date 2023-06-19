@@ -3,6 +3,7 @@ package com.group18.rental_web.model;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,19 +21,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
     private String hashedPassword;
 
+    @Column(nullable = false)
     private String name;
 
     // 0: male, 1: female, 2: other
+    @Column(nullable = false)
     private int gender;
 
+    @Column(nullable = false)
     private String phone;
 
-    private String token;
-
+    @Column(nullable = false)
     private boolean isForeign;
 
     private String nation;
@@ -157,14 +162,6 @@ public class User {
 
     public void setOwnedHouse(Set<House> ownedHouse) {
         this.ownedHouse = ownedHouse;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public void setIsForeign(boolean isForeign) {

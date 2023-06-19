@@ -14,7 +14,7 @@ public class HouseImage {
 
     @Lob
     // 預設length只有250
-    @Column(length = 10000)
+    @Column(length = 10000, nullable = false)
     private byte[] imageByte;
 
 //    private String base64;

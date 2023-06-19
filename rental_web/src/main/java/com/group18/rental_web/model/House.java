@@ -31,33 +31,44 @@ public class House {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private String address;
 
+    @Column(nullable = false)
     private int capacity;
 
+    @Column(nullable = false)
     private String description;
 
     // 坪數
+    @Column(nullable = false)
     private double size;
 
     // 是不是套房
+    @Column(nullable = false)
     private boolean isSuite;
 
     // 0-> male, 1->female, 2->both
+    @Column(nullable = false)
     private int gender;
 
     @ManyToOne
     private User owner;
 
+    @Column(nullable = false)
     private int rentPerMonth;
 
     // unit: month
+    @Column(nullable = false)
     private int rentTerm;
 
+    @Column(nullable = false)
     private int floor;
 
+    @Column(nullable = false)
     private int prePaidTerm;
 
     private int clickTimes;
