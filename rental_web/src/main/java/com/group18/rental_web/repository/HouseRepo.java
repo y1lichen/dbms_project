@@ -24,23 +24,24 @@ public interface HouseRepo extends JpaRepository<House, Integer> {
         // 用是不是套房找
         @Transactional
         @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
+        // @Lock(LockModeType.PESSIMISTIC_READ)
         public List<House> findByIsSuite(boolean isSuite);
 
         // 用樓層找
         @Transactional
-        @Lock(LockModeType.PESSIMISTIC_WRITE)
+        @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
         public List<House> findByFloor(int floor);
 
         // 用坪數找
         @Transactional
-        // @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
-        @Lock(LockModeType.PESSIMISTIC_WRITE)
+        @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
+        // @Lock(LockModeType.PESSIMISTIC_WRITE)
         public List<House> findBySizeBetween(int startSize, int endSize);
 
         // selector
         @Transactional
-        // @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
-        @Lock(LockModeType.PESSIMISTIC_WRITE)
+        @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT)
+        // @Lock(LockModeType.PESSIMISTIC_WRITE)
         public List<House> findByRentPerMonthBetweenAndIsSuiteAndGenderAndFloorBetweenAndSizeBetween(
                         int startRentPerMonth, int endRentPerMonth, boolean isSuite, int gender, int startFloor,
                         int endFloor,
