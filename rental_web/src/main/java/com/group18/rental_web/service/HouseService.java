@@ -20,12 +20,12 @@ public class HouseService {
     @Autowired
     private HouseRepo houseRepo;
 
-    @Recover
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
     public void saveHouse(House house) {
         houseRepo.save(house);
     }
 
-    @Recover
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
     public void deleteHouse(int id) {
         houseRepo.deleteById(id);
     }
@@ -35,7 +35,7 @@ public class HouseService {
         return houseRepo.findById(id);
     }
 
-    @Recover
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
     public void addClickTimes(int id) {
         Optional<House> optHouse = houseRepo.findById(id);
         House house = optHouse.get();
@@ -58,7 +58,7 @@ public class HouseService {
                 endRentPerMonth, isSuite, gender, startFloor, endFloor, startSize, endSize);
     }
 
-    @Recover
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
     public Optional<House> editHouse(int id, String title, String address,
             int capacity, String description, int floor, int monthly_fee,
             int rent_term, int gender, int prepaid_term, double size,
@@ -82,6 +82,12 @@ public class HouseService {
         house.setHouseImages(images);
         saveHouse(house);
         return Optional.of(house);
+    }
+
+    @Recover
+    public String recover(ResourceAccessException e) {
+        System.out.println("Inside recover method");
+        return "Error occurred while fetching data from backend service";
     }
 
 }

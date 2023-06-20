@@ -24,37 +24,37 @@ public class UserService {
 	@Autowired
 	private UserRepo repo;
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public void saveUser(User user) {
 		repo.save(user);
 	}
 
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> getUserById(int id) {
 		return repo.findById(id);
 	}
 
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> getUserByEmail(String email) {
 		return repo.findByEmail(email);
 	}
 
-	@Recover
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public void deleteUser(User user) {
 		repo.delete(user);
 	}
 
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> findByEmail(String email) {
 		return repo.findByEmail(email);
 	}
 
-
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public boolean existsByEmail(String email) {
 		return repo.existsByEmail(email);
 	}
 
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public String validate(String email, String password) {
 		Optional<User> optUser = findByEmail(email);
 		if (optUser.isEmpty())
@@ -66,8 +66,7 @@ public class UserService {
 		return null;
 	}
 
-
-    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	@Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public String checkIsLoginAndRedirect(String path, HttpSession session) {
 		String email = getEmailFromSession(session);
 		if (email == null || email.equals("")) {
@@ -90,6 +89,7 @@ public class UserService {
 		return null;
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> getUserByLoginSession(HttpSession session) {
 		String email = getEmailFromSession(session);
 		if (email == null) {
@@ -102,16 +102,19 @@ public class UserService {
 		return optUser;
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public void addlikedHouse(User user, House house) {
 		user.addLikedHouse(house);
 		repo.save(user);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public void removeLikedHouse(User user, House house) {
 		user.removeLikedHouse(house);
 		repo.save(user);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public void toggleLikedHouse(User user, House house) {
 		Set<House> likedHouse = user.getLikedHouses();
 		if (likedHouse.contains(house)) {
@@ -124,8 +127,15 @@ public class UserService {
 		System.out.println(user.getLikedHouses().size());
 	}
 
-    public void addHouseSearchHistory(User user, House house) {
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
+	public void addHouseSearchHistory(User user, House house) {
 		user.addLikedHouse(house);
-        repo.save(user);
-    }
+		repo.save(user);
+	}
+
+	@Recover
+	public String recover(ResourceAccessException e) {
+		System.out.println("Inside recover method");
+		return "Error occurred while fetching data from backend service";
+	}
 }
