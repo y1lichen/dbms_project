@@ -1,15 +1,21 @@
 package com.group18.rental_web.service;
 
+import java.util.Optional;
+import java.util.Set;
+
+import javax.servlet.http.HttpSession;
+
 import com.group18.rental_web.model.House;
 import com.group18.rental_web.model.User;
 import com.group18.rental_web.repository.UserRepo;
 import com.group18.rental_web.utils.Encoder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
-import java.util.Optional;
-import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 @Service
 public class UserService {
@@ -22,26 +28,33 @@ public class UserService {
 		repo.save(user);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> getUserById(int id) {
 		return repo.findById(id);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> getUserByEmail(String email) {
 		return repo.findByEmail(email);
 	}
 
+	@Recover
 	public void deleteUser(User user) {
 		repo.delete(user);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public Optional<User> findByEmail(String email) {
 		return repo.findByEmail(email);
 	}
 
+
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public boolean existsByEmail(String email) {
 		return repo.existsByEmail(email);
 	}
 
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public String validate(String email, String password) {
 		Optional<User> optUser = findByEmail(email);
 		if (optUser.isEmpty())
@@ -53,6 +66,8 @@ public class UserService {
 		return null;
 	}
 
+
+    @Retryable(value = { ResourceAccessException.class }, maxAttempts = 4, backoff = @Backoff(1000))
 	public String checkIsLoginAndRedirect(String path, HttpSession session) {
 		String email = getEmailFromSession(session);
 		if (email == null || email.equals("")) {
